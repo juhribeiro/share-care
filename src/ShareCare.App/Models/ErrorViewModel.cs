@@ -1,5 +1,3 @@
-using System;
-
 namespace ShareCare.App.Models
 {
     public class ErrorViewModel
