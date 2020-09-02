@@ -1,6 +1,6 @@
 using System;
 
-namespace shareCare.Models
+namespace ShareCare.App.Models
 {
     public class ErrorViewModel
     {

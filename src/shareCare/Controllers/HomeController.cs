@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using shareCare.Models;
+using ShareCare.App.Models;
 
-namespace shareCare.Controllers
+namespace ShareCare.App.Controllers
 {
     public class HomeController : Controller
     {
