@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30428.66
+VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareCare.App", "src\ShareCare.App\ShareCare.App.csproj", "{85574214-C2E0-4AC5-A7BE-E36A33B01AF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "shareCare", "src\shareCare\shareCare.csproj", "{A57D1E0B-C100-4AA4-9339-733B8077512B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{85574214-C2E0-4AC5-A7BE-E36A33B01AF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85574214-C2E0-4AC5-A7BE-E36A33B01AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{85574214-C2E0-4AC5-A7BE-E36A33B01AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{85574214-C2E0-4AC5-A7BE-E36A33B01AF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A57D1E0B-C100-4AA4-9339-733B8077512B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A57D1E0B-C100-4AA4-9339-733B8077512B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A57D1E0B-C100-4AA4-9339-733B8077512B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A57D1E0B-C100-4AA4-9339-733B8077512B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {71AEC66F-DC72-42FB-8662-08D5A37B949B}
+		SolutionGuid = {88C82A5A-A710-4A9B-BFFE-DC3D62361890}
 	EndGlobalSection
 EndGlobal

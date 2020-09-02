@@ -1,73 +1,7 @@
-# Terraform
-.terraform
-.terragrunt-cache
-*.tfstate*
-crash.log
-credentials.tfvars
-
-# Ansible
-.ansible_vault.pass
-ansible.log
-.ansible_facts
-roles/
-
-# Vim
-*.swp
-
 # VSCode
 .vscode/**
 !.vscode/settings.json
 
-# Secrets are not allowed in general
-*.key
-*.pem
-/config/credentials/production.key
-
-# Secrets are encrypted using git-crypt
-!secrets/*
-
-# OS X
-.history
-.DS_Store
-
-# IntelliJ
-.idea_modules
-*.iml
-*.iws
-*.ipr
-.idea/
-build/
-*/build/
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-.powenv
-
-# Python distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
 
 # User-specific files
 *.rsuser
@@ -229,16 +163,6 @@ AutoTest.Net/
 
 # Installshield output folder
 [Ee]xpress/
-
-# DocProject is a documentation generator add-in
-DocProject/buildhelp/
-DocProject/Help/*.HxT
-DocProject/Help/*.HxC
-DocProject/Help/*.hhc
-DocProject/Help/*.hhk
-DocProject/Help/*.hhp
-DocProject/Help/Html2
-DocProject/Help/html
 
 # Click-Once directory
 publish/
