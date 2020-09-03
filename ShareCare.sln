@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareCare.Model", "src\Shar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareCare.Service", "src\ShareCare.Service\ShareCare.Service.csproj", "{CF5C8FA5-0A23-4E35-B236-4CCCFBE39189}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareCare.Xunit", "tests\ShareCare.Xunit\ShareCare.Xunit.csproj", "{E5D216B2-BE0A-4C0F-85C7-C0B07E64361A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShareCare.XUnit", "tests\ShareCare.Xunit\ShareCare.XUnit.csproj", "{E5D216B2-BE0A-4C0F-85C7-C0B07E64361A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
