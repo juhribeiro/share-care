@@ -16,11 +16,11 @@ namespace ShareCare.Infra.Repositories
         where TBaseDbModel : BaseDbModel
         where TBaseModel : BaseModel
     {
-        private readonly SharedCareContext context;
+        private readonly ShareCareContext context;
         private readonly IMapper mapper;
         private readonly DbSet<TBaseDbModel> setDb;
 
-        protected BaseRepository(SharedCareContext context, IMapper mapper)
+        protected BaseRepository(ShareCareContext context, IMapper mapper)
         {
             this.context = context;
             this.mapper = mapper;
