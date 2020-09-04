@@ -5,12 +5,32 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Configuration\" />
+    <Compile Remove="Migrations\20200904105105_DoctorPatient.cs" />
+    <Compile Remove="Migrations\20200904105105_DoctorPatient.Designer.cs" />
+    <Compile Remove="Migrations\20200904105313_DoctorPatient.cs" />
+    <Compile Remove="Migrations\20200904105313_DoctorPatient.Designer.cs" />
+    <Compile Remove="Migrations\20200904105503_DoctorPatient.cs" />
+    <Compile Remove="Migrations\20200904105503_DoctorPatient.Designer.cs" />
+    <Compile Remove="Migrations\20200904105548_DoctorPatient.cs" />
+    <Compile Remove="Migrations\20200904105548_DoctorPatient.Designer.cs" />
+    <Compile Remove="Migrations\20200904115602_DoctorPatientSchedulers.cs" />
+    <Compile Remove="Migrations\20200904115602_DoctorPatientSchedulers.Designer.cs" />
+    <Compile Remove="Migrations\20200904115721_DoctorPatientSchedulers.cs" />
+    <Compile Remove="Migrations\20200904115721_DoctorPatientSchedulers.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
