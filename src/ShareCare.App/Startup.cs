@@ -1,10 +1,13 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ShareCare.App.Configuration;
 using ShareCare.Infra.Context;
+using ShareCare.Model.Mapper;
 
 namespace ShareCare.App
 {
@@ -25,6 +28,18 @@ namespace ShareCare.App
             string connection = Configuration["Mysql:ConnectionString"];
             services.AddDbContext<ShareCareContext>(options => options.UseSqlServer(connection));
 
+            MapperConfiguration mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new AutomapperProfile());
+            });
+
+            IMapper mapper = mappingConfig.CreateMapper();
+
+            services.AddSingleton(mapper);
+
+            services.AddAutoMapper(typeof(Startup));
+
+            services.ResolveDependencies();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

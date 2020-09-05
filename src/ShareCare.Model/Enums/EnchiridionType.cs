@@ -1,6 +1,6 @@
 ﻿namespace ShareCare.Model.Enums
 {
-   public enum EnchiridionType
+    public enum EnchiridionType
     {
         HealthHistory,
 

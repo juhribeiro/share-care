@@ -6,6 +6,8 @@ namespace ShareCare.Model.DbModels
     {
         public string CRM { get; set; }
 
+        public string Description { get; set; }
+
         public ICollection<DoctorPatient> DoctorPatients { get; set; }
 
         public ICollection<Specialty> Specialties { get; set; }
