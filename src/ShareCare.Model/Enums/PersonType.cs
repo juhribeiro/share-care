@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ShareCare.Model.Enums
 {
-   public enum PersonType
+    public enum PersonType
     {
+        [Display(Name = "Médico")]
         Doctor,
+
+        [Display(Name = "Beneficiário")]
         Patient
     }
 }

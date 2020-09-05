@@ -1,6 +1,6 @@
 ﻿namespace ShareCare.Model.Enums
 {
-   public enum ContactType
+    public enum ContactType
     {
         Email,
         Value
