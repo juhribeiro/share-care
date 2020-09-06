@@ -17,25 +17,25 @@
     <title>Dashboard</title>
 
     <!-- Fontfaces CSS-->
-    <link href="css/font-face.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="~/css/font-face.css" rel="stylesheet" media="all">
+    <link href="~/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
-    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
 
     <!-- Vendor CSS-->
-    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="~/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="~/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="~/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="css/theme.css" rel="stylesheet" media="all">
+    <link href="~/css/theme.css" rel="stylesheet" media="all">
 
 </head>
 <body class="animsition">
@@ -69,11 +69,19 @@
                                 <i class="fas fa-chart-bar"></i>Guia médico
                             </a>
                         </li>
-                        <li>
-                            <a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">
-                                <i class="fas fa-table"></i>Histórico
-                            </a>
-                        </li>
+                        <button class="dropdown-btn">
+                            <i class="fas fa-table"></i>Histórico
+                        </button>
+                        <div class="dropdown-container">
+                            <li><a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">Alergia e Imunologia</a></li>
+                            <li><a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">Anestesiologia</a></li>
+                            <li><a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">Angiologia</a></li>
+                            <li><a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">Cancerologia</a></li>
+                            <li><a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">Cardiologia</a></li>
+                            <li><a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">Cirurgia</a></li>
+                            <li><a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">Clínica Médica</a></li>
+                            <li><a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">Colopractologia</a></li>
+                        </div>
                     </ul>
                 </div>
             </nav>
@@ -99,11 +107,19 @@
                                 <i class="fas fa-chart-bar"></i>Guia médico
                             </a>
                         </li>
-                        <li>
-                            <a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">
+                        <button class="dropdown-btn">
                                 <i class="fas fa-table"></i>Histórico
-                            </a>
-                        </li>
+                        </button>
+                        <div class="dropdown-container">
+                            <li><a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">Alergia e Imunologia</a></li>
+                            <li><a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">Anestesiologia</a></li>
+                            <li><a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">Angiologia</a></li>
+                            <li><a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">Cancerologia</a></li>
+                            <li><a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">Cardiologia</a></li>
+                            <li><a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">Cirurgia</a></li>
+                            <li><a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">Clínica Médica</a></li>
+                            <li><a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">Colopractologia</a></li>
+                        </div>
                     </ul>
                 </nav>
             </div>
@@ -294,28 +310,46 @@
     </div>
 
     <!-- Jquery JS-->
-    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <script src="~/vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <script src="~/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="~/vendor/bootstrap-4.1/bootstrap.min.js"></script>
     <!-- Vendor JS       -->
-    <script src="vendor/slick/slick.min.js">
+    <script src="~/vendor/slick/slick.min.js">
     </script>
-    <script src="vendor/wow/wow.min.js"></script>
-    <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    <script src="~/vendor/wow/wow.min.js"></script>
+    <script src="~/vendor/animsition/animsition.min.js"></script>
+    <script src="~/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
     </script>
-    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
+    <script src="~/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="~/vendor/counter-up/jquery.counterup.min.js">
     </script>
-    <script src="vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js">
+    <script src="~/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="~/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="~/vendor/select2/select2.min.js">
     </script>
 
     <!-- Main JS-->
-    <script src="js/main.js"></script>
+    <script src="~/js/main.js"></script>
+    <script>
+        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+
     @RenderSection("Scripts", required: false)
     @RenderBody()
     <script src="https://plugin.handtalk.me/web/latest/handtalk.min.js"></script>
