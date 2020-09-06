@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ShareCare.App.Controllers
 {
-    public class MedicalGuideController : Controller
+    public class PatientGuideController : Controller
     {
-        public MedicalGuideController()
+        public PatientGuideController()
         {
 
         }
@@ -19,16 +19,6 @@ namespace ShareCare.App.Controllers
         }
 
         public IActionResult List()
-        {
-            return View();
-        }
-
-        public IActionResult SaveSchedule()
-        {
-            return View();
-        }
-
-        public IActionResult Create()
         {
             return View();
         }
