@@ -65,6 +65,8 @@ namespace ShareCare.App
             {
                 client.BaseAddress = new Uri(notifyUrl);
             });
+
+            services.AddApplicationInsightsTelemetry(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
