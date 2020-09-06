@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +8,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ShareCare.App.Configuration;
 using ShareCare.Infra.Context;
+using ShareCare.Model.Interfaces;
 using ShareCare.Model.Mapper;
+using ShareCare.Service.Services;
+using System;
 
 namespace ShareCare.App
 {
@@ -25,7 +29,7 @@ namespace ShareCare.App
         {
             services.AddControllersWithViews();
 
-            string connection = Configuration["Mysql:ConnectionString"];
+            string connection = Configuration["ConnectionString"];
             services.AddDbContext<ShareCareContext>(options => options.UseSqlServer(connection));
 
             MapperConfiguration mappingConfig = new MapperConfiguration(mc =>
@@ -40,6 +44,27 @@ namespace ShareCare.App
             services.AddAutoMapper(typeof(Startup));
 
             services.ResolveDependencies();
+
+            services.AddHttpContextAccessor();
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            }).AddCookie(options => { options.LoginPath = "/Account/Login"; });
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AuthorizeFolder("/");
+                options.Conventions.AllowAnonymousToPage("/Login");
+            });
+
+            string notifyUrl = Configuration["SpecialtyUrl"];
+
+            services.AddHttpClient<ISpecialtyService, SpecialtyService>(client =>
+            {
+                client.BaseAddress = new Uri(notifyUrl);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +84,8 @@ namespace ShareCare.App
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

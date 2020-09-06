@@ -1,31 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ShareCare.Model.Enums;
+using ShareCare.Model.Interfaces;
+using System.Threading.Tasks;
 
 namespace ShareCare.App.Controllers
 {
+    [Authorize]
     public class MedicalGuideController : Controller
     {
-        public MedicalGuideController()
-        {
+        private readonly IMedicalGuideService guideService;
 
+        public MedicalGuideController(IMedicalGuideService guideService)
+        {
+            this.guideService = guideService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
-        }
-
-        public IActionResult List()
-        {
-            return View();
-        }
-
-        public IActionResult SaveSchedule()
-        {
-            return View();
+            var doctors = await guideService.GetListAsync();
+            return View(doctors);
         }
     }
 }
