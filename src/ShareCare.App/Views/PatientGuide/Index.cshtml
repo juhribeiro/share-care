@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SimpleDoctorModel>
+﻿@model IEnumerable<ShareCare.Model.Models.SimplePatientModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -9,17 +9,17 @@
     <div class="table-data__tool">
         <div class="table-data__tool-right">
             <div class="rs-select2--light rs-select2--md">
-                @{var specialtiesfilter = Model.SelectMany(x => x.Specialties);}
-                @Html.DropDownListFor(m => specialtiesfilter, new SelectList(specialtiesfilter), "Especialidades", new { @class = "js-select2" })
+                @{var patients = Model.Select(x => x.Name);}
+                @Html.DropDownListFor(m => patients, new SelectList(patients), "Nomes", new { @class = "js-select2" })
                 <div class="dropDownSelect2"></div>
             </div>
             <div class="rs-select2--light rs-select2--sm">
                 <select class="js-select2" name="time">
-                    <option selected="selected">Horarios</option>
-                    <option value="">7:00</option>
-                    <option value="">8:00</option>
-                    <option value="">9:00</option>
-                    <option value="">10:00</option>
+                    <option selected="selected">Datas</option>
+                    <option value="">06/09/2020</option>
+                    <option value="">07/09/2020</option>
+                    <option value="">08/09/2020</option>
+                    <option value="">09/09/2020</option>
                 </select>
                 <div class="dropDownSelect2"></div>
             </div>
@@ -32,54 +32,47 @@
                     <th>
                         Avatar
                     </th>
-
                     <th>Nome</th>
-
                     <th>Email</th>
-
-                    <th>Especialidade</th>
-
-                    <th>Status</th>
-
-                    <th>Descrição</th>
+                    <th>Telefone</th>
+                    <th>Atendimento</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr class="tr-shadow">
+                    <tr>
                         <td>
                             <div class="image img-40">
                                 @{ var img = $"{item.SimpleName}.jpg"; }
                                 <img src="~/img/icon/@img" alt="@item.SimpleName" />
                             </div>
                         </td>
+
                         <td>
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
+
                         <td class="desc">
                             @{ string email = item.Contacts.FirstOrDefault(x => x.Type == ContactType.Email).Value;}
                             <span>@email</span>
                         </td>
+                        @*<td>
+                                @{ var phones = item.Contacts.Where(x => x.Type == ContactType.Phone).Select(x => x.Value);
+                                    string phonesnumbers = string.Join(",", phones);
+                                }
+                                @phonesnumbers
+                            </td>*@
                         <td>
-                            @{ string specialties = string.Join(",", item.Specialties);}
-                            @specialties
+                            @item.Specialty
                         </td>
-                        <td>
-                            <span class="status--process">Livre</span>
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            <div class="table-data-feature">
-                                @Html.ActionLink("Agendar", "Index", "Scheduler", new { id = item.Id, shedulertype = PersonType.Doctor, specialties = specialties }, new { @class = "btn btn-primary" })
-                            </div>
-
-                        <td>
-                        </td>
-
+                        @*<th> @Html.DisplayFor(modelItem => item.Specialty)</th>*@
+                    <td>
+                        @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Histórico", "Historic", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Solicitar Agendar", "Index", "Scheduler", new { id = item.Id, shedulertype = PersonType.Patient, specialties = item.Specialty }, new { @class = "btn btn-primary" })
+                    </td>
                     </tr>
                 }
             </tbody>

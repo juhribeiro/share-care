@@ -1,15 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.Extensions.Primitives;
 using ShareCare.App.Extensions;
 using ShareCare.App.Models;
 using ShareCare.Model.Enums;
 using ShareCare.Model.Interfaces;
 using ShareCare.Model.Models;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -66,7 +63,7 @@ namespace ShareCare.App.Controllers
         {
             if (ModelState.IsValid)
             {
-                var availability = await accountService.AvailabilityEmailAsync(selectPersonType.Email);
+                var availability = await accountService.AvailabilityEmailAsync(selectPersonType.Email, selectPersonType.Type);
                 if (!availability.Any())
                 {
                     // ou get do google
@@ -75,7 +72,7 @@ namespace ShareCare.App.Controllers
                         Type = ContactType.Email,
                         Value = selectPersonType.Email,
                     };
-
+                    var phone = new ContactModel { Type = ContactType.Phone };
                     if (selectPersonType.Type == PersonType.Doctor)
                     {
                         var specialities = await specialtyService.GetSpecialtyAsync();
@@ -87,7 +84,7 @@ namespace ShareCare.App.Controllers
                         };
 
                         doctormodel.Contacts.Add(contact);
-                        doctormodel.Contacts.Add(new ContactModel { Type = ContactType.Phone });
+                        doctormodel.Contacts.Add(phone);
 
                         return View(nameof(CreateDoctor), doctormodel);
                     }
@@ -100,6 +97,7 @@ namespace ShareCare.App.Controllers
                         };
 
                         patientModel.Contacts.Add(contact);
+                        patientModel.Contacts.Add(phone);
                         return View(nameof(CreatePatient), patientModel);
                     }
                 }
@@ -126,9 +124,15 @@ namespace ShareCare.App.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreatePatient(SimplePatientModel simpleDoctor)
+        public async Task<IActionResult> CreatePatient(SimplePatientModel simplePatient)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                await accountService.CreateAsync(simplePatient);
+                return Redirect("~/Home/Index");
+            }
+
+            return View(simplePatient);
         }
 
         public async Task<IActionResult> Logout()

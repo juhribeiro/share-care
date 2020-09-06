@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using ShareCare.Model.Enums;
 using ShareCare.Model.Models;
 using System.Threading.Tasks;
 
@@ -10,6 +11,6 @@ namespace ShareCare.Model.Interfaces
 
         Task CreateAsync(SimplePersonModel person);
 
-        Task<ModelStateDictionary> AvailabilityEmailAsync(string email);
+        Task<ModelStateDictionary> AvailabilityEmailAsync(string email, PersonType personType);
     }
 }

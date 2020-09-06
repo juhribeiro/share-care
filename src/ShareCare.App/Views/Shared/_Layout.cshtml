@@ -1,4 +1,14 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string email = Context.GetEmail();
+    string name = Context.GetName();
+    string role = Context.GetFullName();
+    string image = $"{name}.jpg";
+    var doctor = PersonType.Doctor.ToString();
+    bool isDoctor = Context.GetRole().Equals(doctor);
+    var welcome = isDoctor ? $"Olá Dra {name},\n Como estão seus pacientes?" : $"Olá {name},\n Como se sente hoje?";
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Required meta tags-->
@@ -55,19 +65,38 @@
                     <ul class="navbar-mobile__list list-unstyled">
                         <li>
                             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                              @welcome
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                                 <i class="fas fa-calendar-alt"></i>Agenda
                             </a>
                         </li>
-                        <li>
-                            <a class="navbar-brand" asp-area="" asp-controller="MedicalGuide" asp-action="List">
-                                <i class="fas fa-chart-bar"></i>Guia médico
-                            </a>
-                        </li>
-                        <li>
-                            <a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">
-                                <i class="fas fa-table"></i>Histórico
-                            </a>
-                        </li>
+
+                        @if (isDoctor)
+                        {
+                            <li>
+                                <a class="navbar-brand" asp-area="" asp-controller="PatientGuide" asp-action="Index">
+                                    <i class="fas fa-chart-bar"></i>Guia de Pacientes
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a class="navbar-brand" asp-area="" asp-controller="MedicalGuide" asp-action="Index">
+                                    <i class="fas fa-chart-bar"></i>Guia médico
+                                </a>
+                            </li>
+                            <li>
+                                <a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">
+                                    <i class="fas fa-table"></i>Histórico
+                                </a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </nav>
@@ -85,19 +114,36 @@
                     <ul class="list-unstyled navbar__list">
                         <li>
                             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                                @welcome
+                            </a>
+                        </li>
+                        <li>
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                                 <i class="fas fa-calendar-alt"></i>Agenda
                             </a>
                         </li>
-                        <li>
-                            <a class="navbar-brand" asp-area="" asp-controller="MedicalGuide" asp-action="List">
-                                <i class="fas fa-chart-bar"></i>Guia médico
-                            </a>
-                        </li>
-                        <li>
-                            <a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">
-                                <i class="fas fa-table"></i>Histórico
-                            </a>
-                        </li>
+
+                        @if (isDoctor)
+                        {
+                            <li>
+                                <a class="navbar-brand" asp-area="" asp-controller="PatientGuide" asp-action="Index">
+                                    <i class="fas fa-chart-bar"></i>Guia de Pacientes
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a class="navbar-brand" asp-area="" asp-controller="MedicalGuide" asp-action="Index">
+                                    <i class="fas fa-chart-bar"></i>Guia médico
+                                </a>
+                            </li>
+                            <li>
+                                <a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">
+                                    <i class="fas fa-table"></i>Histórico
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </nav>
             </div>
@@ -233,23 +279,23 @@
                                     <div class="account-wrap">
                                         <div class="account-item clearfix js-item-menu">
                                             <div class="image">
-                                                <img src="~/img/icon/avatar-01.jpg" alt="Gabriela" />
+                                                <img src="~/img/icon/@image" alt="@name" />
                                             </div>
                                             <div class="content">
-                                                <a class="js-acc-btn" href="#">Gabriela</a>
+                                                <a class="js-acc-btn" href="#">@name</a>
                                             </div>
                                             <div class="account-dropdown js-dropdown">
                                                 <div class="info clearfix">
                                                     <div class="image">
                                                         <a href="#">
-                                                            <img src="~/img/icon/avatar-01.jpg" alt="Gabriela" />
+                                                            <img src="~/img/icon/@image" alt="@name" />
                                                         </a>
                                                     </div>
                                                     <div class="content">
                                                         <h5 class="name">
-                                                            <a href="#">Gabriela</a>
+                                                            <a href="#"> @role</a>
                                                         </h5>
-                                                        <span class="email">johndoe@example.com</span>
+                                                        <span class="email">@email</span>
                                                     </div>
                                                 </div>
                                                 <div class="account-dropdown__body">
@@ -282,80 +328,13 @@
                                 @RenderBody()
 
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="copyright">
-                                        <p>Copyright © 2020 - Share&care
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- END MAIN CONTENT-->
             </div>
-
         </div>
 
-        <div id="schedulerModal" class="modal fade" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title">Agendar</h1>
-                    </div>
-                    <div class="modal-body">
-                        <form role="form" method="POST" action="">
-                            <input type="hidden" name="_token" value="">
-                            <div class="form-group">
-                                <label class="control-label">Título</label>
-                                <div>
-                                    <input type="text" class="form-control input-lg" name="email" value="">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Médico</label>
-                                <div>
-                                    <input type="text" class="form-control input-lg" name="email" value="">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="rs-select2--light rs-select2--md">
-                                    <select class="js-select2" name="property">
-                                        <option selected="selected">Especialidade</option>
-                                        <option value="">Cardiologista</option>
-                                        <option value="">Oncologista</option>
-                                    </select>
-                                    <div class="dropDownSelect2"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Descrição</label>
-                                <div>
-                                    <input type="text" class="form-control input-lg" name="description" value="">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Início</label>
-                                <div>
-                                    <input type="datetime-local" class="form-control input-lg" name="dateStart">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Término</label>
-                                <div>
-                                    <input type="datetime-local" class="form-control input-lg" name="dateEnd">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div>
-                                    <button type="submit" class="btn btn-success" asp-area="" asp-controller="MedicalGuide" asp-action="SaveSchedule">Confirmar</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div>
         <!-- END PAGE CONTAINER-->
     </div>
     <!-- Jquery JS-->

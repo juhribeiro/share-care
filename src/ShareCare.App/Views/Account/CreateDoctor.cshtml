@@ -1,4 +1,4 @@
-﻿@model ShareCare.Model.Models.SimpleDoctorModel
+﻿@model SimpleDoctorModel
 
 @{
     Layout = null;
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="Name" class="control-label"> Nome</label>
-                                    <input readonly="readonly" asp-for="Name" class="form-control" />
+                                    <input asp-for="Name" class="form-control" />
                                     <span asp-validation-for="Name" class="text-danger"></span>
                                 </div>
 
@@ -94,7 +94,7 @@
                                 <input type="hidden" readonly="readonly" asp-for="Type" class="form-control" />
 
                                 <div class="form-group">
-                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                    <input type="submit" value="Criar" class="btn btn-primary" />
                                 </div>
                             </form>
                             <div class="register-link">

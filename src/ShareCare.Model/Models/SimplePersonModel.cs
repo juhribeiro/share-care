@@ -17,6 +17,8 @@ namespace ShareCare.Model.Models
 
         public string Password { get; set; }
 
+        public string SimpleName => Name.Split(" ")[0];
+
         public List<ContactModel> Contacts { get; set; }
     }
 }

@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ShareCare.Model.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace ShareCare.Model.Models
 {
     public class LoginModel
     {
-        //todo remover quando tiver o google
+        public PersonType Type { get; set; }
+
         public string Name { get; set; }
 
         [Required]

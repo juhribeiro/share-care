@@ -4,11 +4,10 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using ShareCare.Model.DbModels;
+using ShareCare.Model.Enums;
 using ShareCare.Model.Hash;
 using ShareCare.Model.Interfaces;
 using ShareCare.Model.Models;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -37,10 +36,10 @@ namespace ShareCare.Service.Services
             this.personRepository = personRepository;
         }
 
-        public async Task<ModelStateDictionary> AvailabilityEmailAsync(string email)
+        public async Task<ModelStateDictionary> AvailabilityEmailAsync(string email, PersonType personType)
         {
             ModelStateDictionary keyValuePairs = new ModelStateDictionary();
-            var personentity = await personRepository.GetByConditionAsync(x => x.Contacts.Any(x => x.Value.Equals(email)));
+            var personentity = await personRepository.GetByConditionAsync(x => x.Contacts.Any(x => x.Value.Equals(email) && x.Person.Type == personType));
             if (personentity != null)
             {
                 keyValuePairs.AddModelError("Email", "Este email já está cadastrado");
@@ -51,7 +50,7 @@ namespace ShareCare.Service.Services
 
         public async Task CreateAsync(SimplePersonModel person)
         {
-            var email = person.Contacts.FirstOrDefault(x => x.Type == Model.Enums.ContactType.Email).Value;
+            var email = person.Contacts.FirstOrDefault(x => x.Type == ContactType.Email).Value;
 
             if (person is SimpleDoctorModel doctorModel)
             {
@@ -60,16 +59,12 @@ namespace ShareCare.Service.Services
             }
             else
             {
-                var patientmodel = person as SimpleDoctorModel;
+                var patientmodel = person as SimplePatientModel;
                 var patient = mapper.Map<Patient>(patientmodel);
                 await patientRepository.AddAsync(patient);
             }
 
-            var login = new LoginModel
-            {
-                Email = email,
-                Password = person.Password
-            };
+            var login = mapper.Map<LoginModel>(person);
 
             await LoginAsync(login);
         }
@@ -78,10 +73,10 @@ namespace ShareCare.Service.Services
         {
             ModelStateDictionary keyValuePairs = new ModelStateDictionary();
 
-            var person = await personRepository.GetByConditionAsync(x => x.Contacts.Any(x => x.Value.Equals(login.Email)));
+            var person = await personRepository.GetByConditionAsync(x => x.Contacts.Any(x => x.Value.Equals(login.Email) && x.Person.Type == login.Type));
             if (person is null)
             {
-                keyValuePairs.AddModelError("Email", "Email não cadastrado, crie uma conta para poder acessar o site");
+                keyValuePairs.AddModelError("Email", $"Email não cadastrado para o perfil {login.Type.ToDisplayName()}, crie uma conta para poder acessar o site");
                 return keyValuePairs;
             }
 

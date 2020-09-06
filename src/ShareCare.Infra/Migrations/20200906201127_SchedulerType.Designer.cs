@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShareCare.Infra.Context;
 using ShareCare.Model.Enums;
@@ -10,9 +11,10 @@ using ShareCare.Model.Enums;
 namespace ShareCare.Infra.Migrations
 {
     [DbContext(typeof(ShareCareContext))]
-    partial class ShareCareContextModelSnapshot : ModelSnapshot
+    [Migration("20200906201127_SchedulerType")]
+    partial class SchedulerType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
