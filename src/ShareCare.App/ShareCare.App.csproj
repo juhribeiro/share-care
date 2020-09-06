@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShareCare.Infra\ShareCare.Infra.csproj" />
+    <ProjectReference Include="..\ShareCare.Service\ShareCare.Service.csproj" />
   </ItemGroup>
 
   <ItemGroup>

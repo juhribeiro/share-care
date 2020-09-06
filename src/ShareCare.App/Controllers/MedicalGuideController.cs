@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ShareCare.App.Controllers
 {
+    [Authorize]
     public class MedicalGuideController : Controller
     {
         public MedicalGuideController()
@@ -13,12 +11,8 @@ namespace ShareCare.App.Controllers
 
         }
 
+        [ValidateAntiForgeryToken]
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult List()
         {
             return View();
         }

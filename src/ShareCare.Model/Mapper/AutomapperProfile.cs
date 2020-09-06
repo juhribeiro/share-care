@@ -17,9 +17,13 @@ namespace ShareCare.Model.Mapper
             CreateMap<BaseModel, BaseDbModel>()
                 .ReverseMap();
 
+            CreateMap<ContactModel, Contact>()
+                .ReverseMap();
+           
             CreateMap<SimplePersonModel, Person>()
                 .Include<SimpleDoctorModel, Doctor>()
-                .Include<SimplePatientModel, Patient>();
+                .Include<SimplePatientModel, Patient>()
+                .ReverseMap();
 
             CreateMap<SimpleDoctorModel, Doctor>()
                 .ForMember(x => x.Specialties, o => o.MapFrom(x => x.Specialties))

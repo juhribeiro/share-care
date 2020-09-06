@@ -3,6 +3,6 @@
     public enum ContactType
     {
         Email,
-        Value
+        Phone
     }
 }

@@ -4,6 +4,7 @@ using ShareCare.Infra.Repositories;
 using ShareCare.Model.DbModels;
 using ShareCare.Model.Interfaces;
 using ShareCare.Model.Models;
+using ShareCare.Service.Services;
 
 namespace ShareCare.App.Configuration
 {
@@ -18,6 +19,10 @@ namespace ShareCare.App.Configuration
             services.AddScoped<IBaseRepository<Enchiridion, EnchiridionModel>, EnchiridionRepository>();
             services.AddScoped<IBaseRepository<Patient, SimplePatientModel>, PatientRepository>();
             services.AddScoped<IBaseRepository<Scheduler, SchedulerModel>, SchedulerRepository>();
+            services.AddScoped<IBaseRepository<Person, SimplePersonModel>, PersonRepository>();
+
+            services.AddScoped<IAccountService, AccountService>();
+
             return services;
         }
     }

@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewData["Title"] = "List";
+}
+
+
+<div class="col-md-12">
+    <!-- DATA TABLE -->
+    <div class="table-data__tool">
+        <div class="table-data__tool-right">
+            <div class="rs-select2--light rs-select2--md">
+                <select class="js-select2" name="property">
+                    <option selected="selected">Especialidades</option>
+                    <option value="">Cardiologista</option>
+                    <option value="">Oncologista</option>
+                </select>
+                <div class="dropDownSelect2"></div>
+            </div>
+            <div class="rs-select2--light rs-select2--sm">
+                <select class="js-select2" name="time">
+                    <option selected="selected">Horarios</option>
+                    <option value="">7:00</option>
+                    <option value="">8:00</option>
+                    <option value="">9:00</option>
+                    <option value="">10:00</option>
+                </select>
+                <div class="dropDownSelect2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive table-responsive-data2">
+        <table class="table table-data2">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Especialidade</th>
+                    <th>Status</th>
+                    <th>Descrição</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tr-shadow">
+                    <td class="desc">Dr. Mauricio Souza</td>
+                    <td>
+                        <span class="block-email">mauricio@example.com</span>
+                    </td>
+                    <td>Cardiologista</td>
+                    <td>
+                        <span class="status--process">Livre</span>
+                    </td>
+                    <td>Especialista em cirurgias.</td>
+                    <td>
+                        <div class="table-data-feature">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#schedulerModal">Agendar</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="spacer"></tr>
+                <tr class="tr-shadow">
+                    <td class="desc">Dra. Sabrina Bueno</td>
+                    <td>
+                        <span class="block-email">sabrina@example.com</span>
+                    </td>
+                    <td>Oncologista</td>
+                    <td>
+                        <span class="status--denied">Sem disponibilidade</span>
+                    </td>
+                    <td>Especialista em cirurgias cancerigenas.</td>
+                    <td>
+                        <div class="table-data-feature">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#schedulerModal">Agendar</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="spacer"></tr>
+                <tr class="tr-shadow">
+                    <td class="desc">Dra. Camila Matos</td>
+                    <td>
+                        <span class="block-email">camila@example.com</span>
+                    </td>
+                    <td>Dermatologista</td>
+                    <td>
+                        <span class="status--process">Livre</span>
+                    </td>
+                    <td>Especialista peles.</td>
+                    <td>
+                        <div class="table-data-feature">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#schedulerModal">Agendar</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="spacer"></tr>
+                <tr class="tr-shadow">
+                    <td class="desc">Dr. Pedro Carvalho</td>
+                    <td>
+                        <span class="block-email">pedro@example.com</span>
+                    </td>
+                    <td>Urologista</td>
+                    <td>
+                        <span class="status--process">Livre</span>
+                    </td>
+                    <td>Especialista em cirurgias.</td>
+                    <td>
+                        <div class="table-data-feature">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#schedulerModal">Agendar</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

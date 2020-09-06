@@ -1,10 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ShareCare.App.Models;
 using System.Diagnostics;
+using System.Linq;
+using System.Security.Claims;
 
 namespace ShareCare.App.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -16,6 +20,9 @@ namespace ShareCare.App.Controllers
 
         public IActionResult Index()
         {
+            var teste = User.Identity.Name;
+
+            var sasaszx = User.Claims.SingleOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
             return View();
         }
 
