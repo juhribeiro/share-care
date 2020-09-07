@@ -132,7 +132,7 @@
                                     @*<th> @Html.DisplayFor(modelItem => item.Specialty)</th>*@
                                     <td>
                                         @Html.ActionLink("", "Details", new { id = item.Id }, new { @style = "margin:10px; color: #1CA5B8;top: 299px;left: 1087px;width: 32px;height: 24px;", @class = "fas fa-chart-bar fa-2x" })
-                                        @Html.ActionLink("", "Historic", new { id = item.Id }, new { @style = "margin:10px; color: #1CA5B8;top: 443px;left: 1136px;width: 21px;height: 24px;", @class = "fas fa-chart-bar fa-2x" })
+                                        @Html.ActionLink("", "Historic", new { id = item.Id }, new { @style = "margin:10px; color: #1CA5B8;top: 443px;left: 1136px;width: 21px;height: 24px;", @class = "fas fa-book fa-2x" })
                                         @Html.ActionLink("", "Index", "Scheduler", new { id = item.Id, shedulertype = PersonType.Patient, specialties = item.Specialty }, new { @class = "fas fa-calendar-alt fa-2x", @style = "margin:10px;color: #1CA5B8; top: 299px;left: 1174px;width: 21px;height: 24px;" })
                                     </td>
                                 </tr>
