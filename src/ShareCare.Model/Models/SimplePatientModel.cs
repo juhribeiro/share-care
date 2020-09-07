@@ -7,6 +7,6 @@ namespace ShareCare.Model.Models
     {
         public List<string> Specialties { get; set; }
 
-        public string Specialty => string.Join(",", Specialties.Distinct());
+        public string Specialty => string.Join(", ", Specialties.Distinct());
     }
 }

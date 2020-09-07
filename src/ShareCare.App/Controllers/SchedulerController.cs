@@ -25,8 +25,8 @@ namespace ShareCare.App.Controllers
         {
             var scheduler = new SchedulerModel();
             scheduler.DoctorPatient = new DoctorPatientModel();
-            scheduler.DateStart = DateTime.Now;
-            scheduler.DateEnd = DateTime.Now;
+            scheduler.DateStart = DateTime.Now.AddHours(1);
+            scheduler.DateEnd = DateTime.Now.AddHours(2);
 
             if (shedulertype == PersonType.Doctor)
             {
@@ -57,11 +57,11 @@ namespace ShareCare.App.Controllers
                 {
                     if (scheduler.Type == SchedulerType.Scheduler)
                     {
-                        return RedirectToAction(nameof(ConfirmScheduler), new { schedulerId = schedulervalidator.Item2 });
+                        return RedirectToAction(nameof(DetailScheduler), new { schedulerId = schedulervalidator.Item2 });
                     }
                     else
                     {
-                        return RedirectToAction(nameof(ConfirmSolicitation), new { schedulerId = schedulervalidator.Item2 });
+                        return RedirectToAction(nameof(DetailSolicitation), new { schedulerId = schedulervalidator.Item2 });
                     }
                 }
             }
@@ -69,13 +69,13 @@ namespace ShareCare.App.Controllers
             return View(scheduler);
         }
 
-        public async Task<IActionResult> ConfirmScheduler(Guid schedulerId)
+        public async Task<IActionResult> DetailScheduler(Guid schedulerId)
         {
             var scheduler = await schedulerService.GetConfirmSchedulerAsync(schedulerId);
             return View(scheduler);
         }
 
-        public async Task<IActionResult> ConfirmSolicitation(Guid schedulerId)
+        public async Task<IActionResult> DetailSolicitation(Guid schedulerId)
         {
             var solicitation = await schedulerService.GetConfirmSolicitationAsync(schedulerId);
             return View(solicitation);

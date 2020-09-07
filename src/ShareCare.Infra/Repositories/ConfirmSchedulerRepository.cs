@@ -6,8 +6,8 @@ using ShareCare.Model.Models;
 
 namespace ShareCare.Infra.Repositories
 {
-    public class ConfirmSchedulerRepository : BaseRepository<Scheduler, ConfirmSchedulerModel>,
-        IBaseRepository<Scheduler, ConfirmSchedulerModel>
+    public class ConfirmSchedulerRepository : BaseRepository<Scheduler, DetailSchedulerModel>,
+        IBaseRepository<Scheduler, DetailSchedulerModel>
     {
         public ConfirmSchedulerRepository(ShareCareContext context, IMapper mapper)
             : base(context, mapper)

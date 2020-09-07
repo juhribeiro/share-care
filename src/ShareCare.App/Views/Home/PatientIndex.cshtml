@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="col">
+    <div class="au-card">
+        <div id="calendar"></div>
+    </div>
+</div>
+
+<div id="teste" class="modal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <strong class="col-4">Sintomas</strong>
+                <div class="row form-group">
+                    <div class="col-12 col-md-12">
+                        <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <button type="submit" class="btn btn-success" asp-area="" asp-controller="Home" asp-action="Index">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<link href="~/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" />
+<script src="~/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+<script src="~/vendor/bootstrap-4.1/popper.min.js"></script>
+<script src="~/vendor/jquery-3.2.1.min.js"></script>
+<script src="~/vendor/fullcalendar-3.10.0/lib/moment.min.js"></script>
+<script src="~/vendor/fullcalendar-3.10.0/fullcalendar.js"></script>
+<script type="text/javascript">
+    $(function () {
+        // for now, there is something adding a click handler to 'a'
+        var tues = moment().day(2).hour(19);
+
+        // build trival night events for example data
+        var events = [
+            {
+                title: "Special Conference",
+                start: moment().format('YYYY-MM-DD'),
+                url: '#'
+            },
+            {
+                title: "Doctor Appt",
+                start: moment().hour(9).add(2, 'days').toISOString(),
+                url: '#'
+            }
+
+        ];
+
+        var trivia_nights = []
+
+        for (var i = 1; i <= 4; i++) {
+            var n = tues.clone().add(i, 'weeks');
+            console.log("isoString: " + n.toISOString());
+            trivia_nights.push({
+                title: 'Trival Night  Pub XYZ',
+                start: n.toISOString(),
+                allDay: false,
+                url: '#'
+            });
+        }
+
+        // setup a few events
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay,listWeek'
+            },
+            events: events.concat(trivia_nights),
+            dayClick: function () {
+                $("#teste").modal();
+                $('.modal-backdrop').remove();
+            }
+        });
+    });
+</script>

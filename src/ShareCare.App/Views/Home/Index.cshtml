@@ -1,5 +1,8 @@
-﻿@{
+﻿@model IEnumerable<ShareCare.Model.Models.DetailSolicitationModel>
+
+@{
     ViewData["Title"] = "Home Page";
+    var order = Model.OrderBy(x => x.DateStart);
 }
 
 <div class="col">
@@ -8,64 +11,34 @@
     </div>
 </div>
 
-<div id="teste" class="modal" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <strong class="col-4">Sintomas</strong>
-                <div class="row form-group">
-                    <div class="col-12 col-md-12">
-                        <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div>
-                        <button type="submit" class="btn btn-success" asp-area="" asp-controller="Home" asp-action="Index">Salvar</button>
-                    </div>
-                </div>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div>
 <link href="~/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" />
 <script src="~/vendor/bootstrap-4.1/bootstrap.min.js"></script>
 <script src="~/vendor/bootstrap-4.1/popper.min.js"></script>
 <script src="~/vendor/jquery-3.2.1.min.js"></script>
 <script src="~/vendor/fullcalendar-3.10.0/lib/moment.min.js"></script>
 <script src="~/vendor/fullcalendar-3.10.0/fullcalendar.js"></script>
+
+<script>
+    var events = [];
+</script>
+
+@foreach (var item in order)
+{
+    <script type="text/javascript">
+
+    var event =
+    {
+        title: ' - Consulta: @item.SimpleName',
+        start: '@item.DateStart.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'FFF'Z'")',
+        allDay: false,
+        url: '/Scheduler/DetailSolicitation?schedulerId=@item.Id'
+    };
+    events.push(event);
+    </script>
+}
+
 <script type="text/javascript">
     $(function () {
-        // for now, there is something adding a click handler to 'a'
-        var tues = moment().day(2).hour(19);
-
-        // build trival night events for example data
-        var events = [
-            {
-                title: "Special Conference",
-                start: moment().format('YYYY-MM-DD'),
-                url: '#'
-            },
-            {
-                title: "Doctor Appt",
-                start: moment().hour(9).add(2, 'days').toISOString(),
-                url: '#'
-            }
-
-        ];
-
-        var trivia_nights = []
-
-        for (var i = 1; i <= 4; i++) {
-            var n = tues.clone().add(i, 'weeks');
-            console.log("isoString: " + n.toISOString());
-            trivia_nights.push({
-                title: 'Trival Night  Pub XYZ',
-                start: n.toISOString(),
-                allDay: false,
-                url: '#'
-            });
-        }
-
         // setup a few events
         $('#calendar').fullCalendar({
             header: {
@@ -73,10 +46,18 @@
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay,listWeek'
             },
-            events: events.concat(trivia_nights),
-            dayClick: function () {
-                $("#teste").modal();
-                $('.modal-backdrop').remove();
+            events: events,
+            monthNames: ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+            buttonText: {
+                prev: "<",
+                next: ">",
+                today: "Hoje",
+                month: "Mês",
+                week: "Semana",
+                day: "Dia"
             }
         });
     });
