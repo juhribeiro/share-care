@@ -42,6 +42,7 @@ namespace ShareCare.Model.Mapper
                 .ForMember(x => x.Email, o => o.MapFrom(x => x.Contacts.First().Value));
 
             CreateMap<DiaryModel, Diary>()
+                 .ForPath(x => x.PatientId, o => o.MapFrom(x => x.PatientId))
                .ReverseMap();
 
             CreateMap<Scheduler, DetailSchedulerModel>()

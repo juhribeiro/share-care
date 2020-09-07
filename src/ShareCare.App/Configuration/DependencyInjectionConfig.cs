@@ -31,6 +31,7 @@ namespace ShareCare.App.Configuration
             services.AddScoped<ISchedulerService, SchedulerService>();
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IMedicalHistoryService, MedicalHistoryService>();
+            services.AddScoped<IDiaryService, DiaryService>();
 
             return services;
         }

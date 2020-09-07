@@ -1,0 +1,33 @@
+﻿@model ShareCare.Model.Models.DiaryModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>DiaryModel</h4>
+<hr />
+<div class="col-md-12">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Value" class="control-label"></label>
+            <input asp-for="Value" class="form-control" />
+            <span asp-validation-for="Value" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="DataAnnotation" class="control-label"></label>
+            <input type="hidden" readonly="readonly" asp-for="DataAnnotation" class="form-control" />
+            <span asp-validation-for="DataAnnotation" class="text-danger"></span>
+        </div>
+
+        <input type="hidden" readonly="readonly" asp-for="PatientId" class="form-control" />
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
