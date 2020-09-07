@@ -1,10 +1,15 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ShareCare.App.Extensions;
 using ShareCare.App.Models;
+using ShareCare.Model.Enums;
+using ShareCare.Model.Interfaces;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace ShareCare.App.Controllers
 {
@@ -12,15 +17,29 @@ namespace ShareCare.App.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IHomeService homeService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IHomeService homeService)
         {
             _logger = logger;
+            this.homeService = homeService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var doctor = PersonType.Doctor.ToString();
+            bool isDoctor = HttpContext.GetRole().Equals(doctor);
+            var identify = Guid.Parse(HttpContext.GetIdentifier());
+
+            if (isDoctor)
+            {
+                var schedulers = await homeService.GetDetailSolicitationAsync(identify);
+                return View(schedulers);
+            }
+            else
+            {
+                return View("PatientIndex");
+            }
         }
 
         public IActionResult Privacy()

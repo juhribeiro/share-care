@@ -44,11 +44,15 @@ namespace ShareCare.Model.Mapper
             CreateMap<DiaryModel, Diary>()
                .ReverseMap();
 
-            CreateMap<Scheduler, ConfirmSchedulerModel>()
-                 .ForMember(x => x.DoctorName, o => o.MapFrom(x => x.DoctorPatient.Doctor.Name));
+            CreateMap<Scheduler, DetailSchedulerModel>()
+                 .ForMember(x => x.DoctorId, o => o.MapFrom(x => x.DoctorPatient.Doctor.Id))
+                 .ForMember(x => x.DoctorName, o => o.MapFrom(x => x.DoctorPatient.Doctor.Name))
+                 .ForMember(x => x.MeetAddressLink, o => o.MapFrom(x => x.MeetAddressLink));
 
-            CreateMap<Scheduler, ConfirmSolicitationModel>()
-                .ForMember(x => x.PatientName, o => o.MapFrom(x => x.DoctorPatient.Patient.Name));
+            CreateMap<Scheduler, DetailSolicitationModel>()
+                .ForMember(x => x.PatientId, o => o.MapFrom(x => x.DoctorPatient.Patient.Id))
+                .ForMember(x => x.PatientName, o => o.MapFrom(x => x.DoctorPatient.Patient.Name))
+                .ForMember(x => x.MeetAddressLink, o => o.MapFrom(x => x.MeetAddressLink));
 
             CreateMap<DoctorPatientModel, DoctorPatient>()
                .ReverseMap();

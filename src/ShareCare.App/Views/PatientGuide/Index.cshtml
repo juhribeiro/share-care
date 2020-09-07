@@ -99,24 +99,22 @@
             <div class="table-responsive table-responsive-data2">
                 <div class="card-name">
                     <table class="table table-data2">
-
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <br />
                                 <tr>
-                                    <td>
+                                    <td width="10%">
                                         <div class="image img-40">
                                             @{ var img = $"{item.SimpleName}.jpg"; }
                                             <img src="~/img/icon/@img" alt="@item.SimpleName" />
                                         </div>
                                     </td>
 
-                                    <td style="text-align: left;font: normal normal bold 14px/21px Poppins;letter-spacing: 0px;color: #3D3D3D;">
+                                    <td width="30%" style="text-align: left;font: normal normal bold 14px/21px Poppins;letter-spacing: 0px;color: #3D3D3D;">
                                         @Html.DisplayFor(modelItem => item.Name)
                                     </td>
 
-                                    <td class="desc">
+                                    <td width="15%" class="desc">
                                         @{ string email = item.Contacts.FirstOrDefault(x => x.Type == ContactType.Email).Value;}
                                         <span>@email</span>
                                     </td>
@@ -126,11 +124,11 @@
                                     }
                                     @phonesnumbers
                                 </td>*@
-                                    <td>
+                                    <td width="15%">
                                         @item.Specialty
                                     </td>
                                     @*<th> @Html.DisplayFor(modelItem => item.Specialty)</th>*@
-                                    <td>
+                                    <td width="30%">
                                         @Html.ActionLink("", "Details", new { id = item.Id }, new { @style = "margin:10px; color: #1CA5B8;top: 299px;left: 1087px;width: 32px;height: 24px;", @class = "fas fa-chart-bar fa-2x" })
                                         @Html.ActionLink("", "Historic", new { id = item.Id }, new { @style = "margin:10px; color: #1CA5B8;top: 443px;left: 1136px;width: 21px;height: 24px;", @class = "fas fa-book fa-2x" })
                                         @Html.ActionLink("", "Index", "Scheduler", new { id = item.Id, shedulertype = PersonType.Patient, specialties = item.Specialty }, new { @class = "fas fa-calendar-alt fa-2x", @style = "margin:10px;color: #1CA5B8; top: 299px;left: 1174px;width: 21px;height: 24px;" })

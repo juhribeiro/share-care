@@ -5,7 +5,7 @@
     string image = $"{name}.jpg";
     var doctor = PersonType.Doctor.ToString();
     bool isDoctor = Context.GetRole().Equals(doctor);
-    var welcome = isDoctor ? $"Olá Dra {name},\n Como estão seus pacientes?" : $"Olá {name},\n Como se sente hoje?";
+    //var welcome = isDoctor ? $"Olá Dra {name},\n Como estão seus pacientes?" : $"Olá {name},\n Como se sente hoje?";
     var backGround = isDoctor ? $"background-color:#F36B79;" : $"background-color:#1DA6B8;";
 
 }
@@ -65,11 +65,11 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li>
+                        @*<li>
                             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                                 @welcome
                             </a>
-                        </li>
+                        </li>*@
 
                         <li>
                             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
@@ -120,11 +120,11 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li>
+                        @*<li>
                             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                                 @welcome
                             </a>
-                        </li>
+                        </li>*@
                         <li>
                             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                                 <i class="fas fa-calendar-alt"></i>Agenda
