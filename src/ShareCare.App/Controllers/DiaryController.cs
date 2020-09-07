@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShareCare.App.Extensions;
 using ShareCare.Model.Interfaces;
@@ -11,7 +10,6 @@ using ShareCare.Model.Models;
 
 namespace ShareCare.App.Controllers
 {
-    [Authorize]
     public class DiaryController : Controller
     {
         private readonly IDiaryService diaryService;

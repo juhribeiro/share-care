@@ -5,124 +5,198 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Meu histórico médico</h1>
 
-<p>
-    Acesse seu historico médico
-</p>
-<br />
+<style>
+    h4 {
+        top: 99px;
+        left: 415px;
+        width: 400px;
+        height: 35px;
+        color: var(--unnamed-color-ffffff);
+        text-align: left;
+        font: normal normal bold 25px/38px Poppins;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    h5 {
+        top: 139px;
+        left: 415px;
+        width: 800px;
+        height: 28px;
+        color: var(--unnamed-color-ffffff);
+        text-align: left;
+        font: normal normal normal 20px/30px Poppins;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    th {
+        top: 221px;
+        left: 525px;
+        width: 43px;
+        height: 20px;
+        text-align: left;
+        font: normal normal bold 14px/21px Poppins;
+        letter-spacing: 0px;
+        color: #3D3D3D;
+        opacity: 1;
+    }
+
+    tr {
+        top: 251px;
+        left: 440px;
+        width: 771px;
+        height: 121px;
+        background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        opacity: 1;
+    }
+</style>
+
 <div class="col-md-12">
-    <div class="card">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="rs-select2--light rs-select2--sm">
-                        <select class="js-select2" name="time">
-                            <option selected="selected">Horarios</option>
-                            <option value="">7:00</option>
-                            <option value="">8:00</option>
-                            <option value="">9:00</option>
-                            <option value="">10:00</option>
-                        </select>
-                        <div class="dropDownSelect2"></div>
-                    </div>
-                    <div class="rs-select2--light rs-select2--sm">
-                        <select class="js-select2" name="time">
-                            <option selected="selected">Horarios</option>
-                            <option value="">7:00</option>
-                            <option value="">8:00</option>
-                            <option value="">9:00</option>
-                            <option value="">10:00</option>
-                        </select>
-                        <div class="dropDownSelect2"></div>
-                    </div>
-
-                    <div class="rs-select2--light rs-select2--sm">
-                        <select class="js-select2" name="time">
-                            <option selected="selected">Horarios</option>
-                            <option value="">7:00</option>
-                            <option value="">8:00</option>
-                            <option value="">9:00</option>
-                            <option value="">10:00</option>
-                        </select>
-                        <div class="dropDownSelect2"></div>
-                    </div>
-
-                </div>
-                <div class="col-md-6">
-                    <div class="rs-select2--light rs-select2--sm">
-                        <select class="js-select2" name="time">
-                            <option selected="selected">Horarios</option>
-                            <option value="">7:00</option>
-                            <option value="">8:00</option>
-                            <option value="">9:00</option>
-                            <option value="">10:00</option>
-                        </select>
-                        <div class="dropDownSelect2"></div>
-                    </div>
-                    <div class="rs-select2--light rs-select2--sm">
-                        <select class="js-select2" name="time">
-                            <option selected="selected">Horarios</option>
-                            <option value="">7:00</option>
-                            <option value="">8:00</option>
-                            <option value="">9:00</option>
-                            <option value="">10:00</option>
-                        </select>
-                        <div class="dropDownSelect2"></div>
-                    </div>
-
-                    <div class="rs-select2--light rs-select2--sm">
-                        <select class="js-select2" name="time">
-                            <option selected="selected">Horarios</option>
-                            <option value="">7:00</option>
-                            <option value="">8:00</option>
-                            <option value="">9:00</option>
-                            <option value="">10:00</option>
-                        </select>
-                        <div class="dropDownSelect2"></div>
-                    </div>
-
-                </div>
-            </div>
+    <div class="table-data__tool">
+        <div class="table-data__tool-right">
+            <h4 style="color: white; top: 99px;">Meu histórico médico:</h4>
+            <h5 style="color:white; top:139px;">Acesse a agenda do profissional da sua escolha e marque uma consulta</h5>
+        </div>
+    </div>
+    <div class="col">
+        <div class="au-card">
+            <h5 style="color: black; top: 99px;font: normal normal bold 16px/25px Poppins;">Histórico > Cardiologia</h5>
             <br />
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="rs-select2--light rs-select2--md">
-                        @{var specialtiesfilter = Model.Select(x => x.Specialty).Distinct();}
-                        @Html.DropDownListFor(m => specialtiesfilter, new SelectList(specialtiesfilter), "Especialidades", new { @class = "js-select2" })
-                        <div class="dropDownSelect2"></div>
-                    </div>
+            <div class="row row-cols-1">
+                <div class="col">
+                    <h6 style="color:black">Data Inicial</h6>
+                </div>
+                <div class="col">
+                    <h6 style="color:black">Data Final</h6>
                 </div>
             </div>
-        </div>
-        <div class="card-body">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <strong class="col-4">Histórico</strong>
-                        <strong class="col-4">Consultas</strong>
-                        <strong class="col-4">Receitas</strong>
-                        <strong class="col-3">Exames</strong>
-                        <strong class="col-4">Atestados</strong>
-                    </div>
-                    @foreach (var item in Model)
-                    {<div class="card-body card-block">
-                            @Html.DisplayFor(modelItem => item.DataStart)
-
-                            @{var img = $"{item.Name.Split(" ")[0]}.jpg"; }
-                         <div class="image img-cir img-40">
-                             <img src="~/img/icon/@img" alt="@item.Name" />
-                         </div>
-                             @Html.DisplayFor(modelItem => item.Name)
-                            <b>Crm-Pr</b> @Html.DisplayFor(modelItem => item.CRM)
+            <div class="row row-cols-1">
+                <div class="col">
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="        color: #1CA5B8;
+        border-bottom-color: #1CA5B8;
+        background-color: white;
+">
+                            Dia
+                        </button>
+                        <div class="dropdown-menu">
                         </div>
-
-                    }
-
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#1CA5B8; border-bottom-color: #1CA5B8;background-color:white;">
+                            Mês
+                        </button>
+                        <div class="dropdown-menu">
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#1CA5B8; border-bottom-color: #1CA5B8;background-color:white;">
+                            Ano
+                        </button>
+                        <div class="dropdown-menu">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#1CA5B8; border-bottom-color: #1CA5B8;background-color:white;">
+                            Dia
+                        </button>
+                        <div class="dropdown-menu">
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#1CA5B8; border-bottom-color: #1CA5B8;background-color:white;">
+                            Mês
+                        </button>
+                        <div class="dropdown-menu">
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#1CA5B8; border-bottom-color: #1CA5B8;background-color:white;">
+                            Ano
+                        </button>
+                        <div class="dropdown-menu">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-        </div>
+            <br />
+            <div class="row row-cols-1">
+                <div class="col">
+                    <h6 style="color:black">Especialização médica</h6>
+                </div>
+            </div>
+            <div class="row row-cols-1">
+                <div class="col">
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#1CA5B8; border-bottom-color: #1CA5B8;background-color:white;">
+                            Cardiologistas
+                        </button>
+                        <div class="dropdown-menu">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+            <br />
+            <div class="card">
+                <div class="card-header">
+                    <div class="row row-cols-3">
+                        <div class="col" style="color:black;font: normal normal bold 16px/25px Poppins;">Anotações do médico</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Receitas</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Exames</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Atestados</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Sintomas</div>
+                    </div>
+                </div>
+                @foreach (var item in Model)
+                {
+                    <div class="card">
+                        <div class="card-body card-block">
+                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <div class="card-body card-block">
+                                    <h6 style=" color:#F46A79; font: normal normal bold 18px/27px Poppins;">
+                                        @Html.DisplayFor(modelItem => item.DataStart)
+                                    </h6>
+                                    <br />
+
+                                    <div class="row row-cols-3">
+                                        <div class="col-1">
+                                            @{var img = $"{item.Name.Split(" ")[0]}.jpg"; }
+                                            <div class="image img-40">
+                                                <img src="~/img/icon/@img" alt="@item.Name" />
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <b style="font: normal normal bold 18px/27px Poppins;">
+                                                @Html.DisplayFor(modelItem => item.Name)
+                                            </b>
+                                            CRM - @Html.DisplayFor(modelItem => item.CRM, new { @style = "font: normal normal normal 18px/27px Poppins;" })
+                                        </div>
+                                    </div>
+
+                                    <br />
+
+                                    @{var healthHistory = item.Enchiridion.SingleOrDefault(x => x.Type == EnchiridionType.HealthHistory);}
+                                    <span>
+                                        @healthHistory?.Value
+                                    </span>
+
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
     </div>
 </div>

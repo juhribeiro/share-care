@@ -47,6 +47,7 @@ namespace ShareCare.Model.Mapper
 
             CreateMap<Scheduler, DetailSchedulerModel>()
                  .ForMember(x => x.DoctorId, o => o.MapFrom(x => x.DoctorPatient.Doctor.Id))
+                 .ForMember(x => x.Description, o => o.MapFrom(x => x.Description))
                  .ForMember(x => x.DoctorName, o => o.MapFrom(x => x.DoctorPatient.Doctor.Name))
                  .ForMember(x => x.MeetAddressLink, o => o.MapFrom(x => x.MeetAddressLink));
 

@@ -6,59 +6,114 @@
 }
 
 
+
+<style>
+    h4 {
+        top: 99px;
+        left: 415px;
+        width: 400px;
+        height: 35px;
+        color: var(--unnamed-color-ffffff);
+        text-align: left;
+        font: normal normal bold 25px/38px Poppins;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    h5 {
+        top: 139px;
+        left: 415px;
+        width: 800px;
+        height: 28px;
+        color: var(--unnamed-color-ffffff);
+        text-align: left;
+        font: normal normal normal 20px/30px Poppins;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    th {
+        top: 221px;
+        left: 525px;
+        width: 43px;
+        height: 20px;
+        text-align: left;
+        font: normal normal bold 14px/21px Poppins;
+        letter-spacing: 0px;
+        color: #3D3D3D;
+        opacity: 1;
+    }
+
+    tr {
+        top: 251px;
+        left: 440px;
+        width: 771px;
+        height: 121px;
+        background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        opacity: 1;
+    }
+</style>
+
 <div class="col-md-12">
-    <div class="card">
-        <div class="card-header">@Model.Type.ToDisplayName()</div>
-        <div class="card-body">
-            <form asp-action="Index">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Specialties" class="control-label">Criar Conta</label>
-                    @Html.DropDownListFor(m => m.Specialty, new SelectList(Model.Specialties), new { @class = "form-control" })
-                    <span asp-validation-for="Specialties" class="text-danger"></span>
-                </div>
+    <div class="table-data__tool">
+        <div class="table-data__tool-right">
+            <h4 style="color: white; top: 99px;">Meu guia médico:</h4>
+            <h5 style="color:white; top:139px;">Acesse a agenda do profissional da sua escolha e marque uma consulta</h5>
+        </div>
+    </div>
+    <div class="col">
+        <div class="au-card">
+            <h5 style="color: black; top: 99px;">Gabriela Saori - Cardiologista</h5>
+            <br />
+            <div class="card-body">
+                <form asp-action="Index">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Specialties" class="control-label">Tipo de consulta</label>
+                        @Html.DropDownListFor(m => m.Specialty, new SelectList(Model.Specialties), new { @class = "form-control" })
+                        <span asp-validation-for="Specialties" class="text-danger"></span>
+                    </div>
 
-                <div class="form-group">
-                    <label asp-for="Title" class="control-label"></label>
-                    <input asp-for="Title" class="form-control" />
-                    <span asp-validation-for="Title" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Description" class="control-label"></label>
-                    <input asp-for="Description" class="form-control" />
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="DateStart" class="control-label"></label>
-                    <input type="datetime-local" asp-for="DateStart" class="form-control" />
-                    <span asp-validation-for="DateStart" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="DateEnd" class="control-label"></label>
-                    <input type="datetime-local" asp-for="DateEnd" class="form-control" />
-                    <span asp-validation-for="DateEnd" class="text-danger"></span>
-                </div>
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label">Título</label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label">Sintomas registrados</label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DateStart" class="control-label">Data início</label>
+                        <input type="datetime-local" asp-for="DateStart" class="form-control" />
+                        <span asp-validation-for="DateStart" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DateEnd" class="control-label">Data final</label>
+                        <input type="datetime-local" asp-for="DateEnd" class="form-control" />
+                        <span asp-validation-for="DateEnd" class="text-danger"></span>
+                    </div>
 
-                @{ var length = Model.Specialties.Count();}
-                @for (int i = 0; i < length; i++)
-                {
-                    <input type="hidden" readonly="readonly" asp-for="Specialties[i]" class="form-control" />
-                }
+                    @{ var length = Model.Specialties.Count();}
+                    @for (int i = 0; i < length; i++)
+                    {
+                        <input type="hidden" readonly="readonly" asp-for="Specialties[i]" class="form-control" />
+                    }
 
-                <input type="hidden" readonly="readonly" asp-for="Type" class="form-control" />
-                <input type="hidden" readonly="readonly" asp-for="DoctorPatient.DoctorId" class="form-control" />
-                <input type="hidden" readonly="readonly" asp-for="DoctorPatient.PatientId" class="form-control" />
+                        <input type="hidden" readonly="readonly" asp-for="Type" class="form-control" />
+                    <input type="hidden" readonly="readonly" asp-for="DoctorPatient.DoctorId" class="form-control" />
+                    <input type="hidden" readonly="readonly" asp-for="DoctorPatient.PatientId" class="form-control" />
 
-                <div class="form-group">
-                    <input type="submit" value="Salvar" class="btn btn-primary" />
-                </div>
-            </form>
+                    <div class="form-group">
+                        <input type="submit" value="Agendar" class="btn btn-primary" style="background-color: #FD7E14; color: white; border: none;" />
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
-
-
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

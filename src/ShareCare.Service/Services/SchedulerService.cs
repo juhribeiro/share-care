@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using ShareCare.Model.DbModels;
+using ShareCare.Model.Enums;
 using ShareCare.Model.Interfaces;
 using ShareCare.Model.Models;
 using System;
@@ -47,7 +48,7 @@ namespace ShareCare.Service.Services
 
         public async Task<DetailSchedulerModel> GetConfirmSchedulerAsync(Guid guid)
         {
-            return await confirmSchedulerrepository.GetModelByIdAsync(guid);
+            return await confirmSchedulerrepository.GetByConditionAsync(x => x.Id.Equals(guid));
         }
 
         public async Task<DetailSolicitationModel> GetConfirmSolicitationAsync(Guid guid)
