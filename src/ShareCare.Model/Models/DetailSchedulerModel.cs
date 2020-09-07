@@ -4,7 +4,7 @@ namespace ShareCare.Model.Models
 {
     public class DetailSchedulerModel : BaseModel
     {
-        public Guid DoctorId { get; set; } 
+        public Guid DoctorId { get; set; }
 
         public DateTime DateStart { get; set; }
 
@@ -19,5 +19,7 @@ namespace ShareCare.Model.Models
         public string DayOfWeek => DateStart.DayOfWeek.ToString();
 
         public string MeetAddressLink { get; set; }
+
+        public string SimpleName => DoctorName.Split(" ")[0];
     }
 }

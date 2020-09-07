@@ -11,35 +11,33 @@ namespace ShareCare.Service.Services
 {
     public class HomeService : IHomeService
     {
-        private readonly IBaseRepository<Scheduler, SchedulerModel> schedulerrepository;
-        private readonly IBaseRepository<DoctorPatient, DoctorPatientModel> doctorPatientRepository;
         private readonly IBaseRepository<Scheduler, DetailSchedulerModel> confirmSchedulerrepository;
         private readonly IBaseRepository<Scheduler, DetailSolicitationModel> confirmSolicitationrepository;
-        private readonly IMapper mapper;
+        private readonly IBaseRepository<Diary, DiaryModel> diaryRepository;
 
         public HomeService(
-            IBaseRepository<Scheduler, SchedulerModel> schedulerrepository,
-            IBaseRepository<DoctorPatient, DoctorPatientModel> doctorPatientRepository,
             IBaseRepository<Scheduler, DetailSchedulerModel> confirmSchedulerrepository,
             IBaseRepository<Scheduler, DetailSolicitationModel> confirmSolicitationrepository,
-
-            IMapper mapper)
+            IBaseRepository<Diary, DiaryModel> diaryRepository)
         {
-            this.schedulerrepository = schedulerrepository;
-            this.doctorPatientRepository = doctorPatientRepository;
             this.confirmSchedulerrepository = confirmSchedulerrepository;
             this.confirmSolicitationrepository = confirmSolicitationrepository;
-            this.mapper = mapper;
+            this.diaryRepository = diaryRepository;
         }
 
-        public async Task<List<DetailSchedulerModel>> GetDetailSchedulerAsync(Guid doctorId)
+        public async Task<List<DetailSchedulerModel>> GetDetailSchedulerAsync(Guid patientId)
         {
-            return await confirmSchedulerrepository.ListByConditionAsync(x => x.DoctorPatient.Doctor.Id.Equals(doctorId));
+            return await confirmSchedulerrepository.ListByConditionAsync(x => x.DoctorPatient.Patient.Id.Equals(patientId));
         }
 
         public async Task<List<DetailSolicitationModel>> GetDetailSolicitationAsync(Guid doctorId)
         {
             return await confirmSolicitationrepository.ListByConditionAsync(x => x.DoctorPatient.Doctor.Id.Equals(doctorId));
+        }
+
+        public async Task<List<DiaryModel>> GetDiaryAsync(Guid patientId)
+        {
+            return await diaryRepository.ListByConditionAsync(x => x.Patient.Id.Equals(patientId));
         }
     }
 }
