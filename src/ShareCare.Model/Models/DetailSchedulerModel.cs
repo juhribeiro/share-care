@@ -2,11 +2,13 @@
 
 namespace ShareCare.Model.Models
 {
-    public class ConfirmSolicitationModel : BaseModel
+    public class DetailSchedulerModel : BaseModel
     {
+        public Guid DoctorId { get; set; } 
+
         public DateTime DateStart { get; set; }
 
-        public string PatientName { get; set; }
+        public string DoctorName { get; set; }
 
         public string Specialty { get; set; }
 
@@ -16,6 +18,6 @@ namespace ShareCare.Model.Models
 
         public string DayOfWeek => DateStart.DayOfWeek.ToString();
 
-        public string TypeSolicitation => "Iremos enviar essa solicitação ao cliente";
+        public string MeetAddressLink { get; set; }
     }
 }

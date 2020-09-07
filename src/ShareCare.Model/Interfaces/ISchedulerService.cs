@@ -9,8 +9,8 @@ namespace ShareCare.Model.Interfaces
     {
         Task<Tuple<ModelStateDictionary, Guid>> CreateAsync(SchedulerModel model);
 
-        Task<ConfirmSchedulerModel> GetConfirmSchedulerAsync(Guid guid);
+        Task<DetailSchedulerModel> GetConfirmSchedulerAsync(Guid guid);
 
-        Task<ConfirmSolicitationModel> GetConfirmSolicitationAsync(Guid guid);
+        Task<DetailSolicitationModel> GetConfirmSolicitationAsync(Guid guid);
     }
 }

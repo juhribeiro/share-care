@@ -4,11 +4,12 @@ using ShareCare.Model.DbModels;
 using ShareCare.Model.Interfaces;
 using ShareCare.Model.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ShareCare.Service.Services
 {
-    public class SchedulerService : ISchedulerService
+    public class HomeService : IHomeService
     {
         private readonly IBaseRepository<Scheduler, SchedulerModel> schedulerrepository;
         private readonly IBaseRepository<DoctorPatient, DoctorPatientModel> doctorPatientRepository;
@@ -16,7 +17,7 @@ namespace ShareCare.Service.Services
         private readonly IBaseRepository<Scheduler, DetailSolicitationModel> confirmSolicitationrepository;
         private readonly IMapper mapper;
 
-        public SchedulerService(
+        public HomeService(
             IBaseRepository<Scheduler, SchedulerModel> schedulerrepository,
             IBaseRepository<DoctorPatient, DoctorPatientModel> doctorPatientRepository,
             IBaseRepository<Scheduler, DetailSchedulerModel> confirmSchedulerrepository,
@@ -31,28 +32,14 @@ namespace ShareCare.Service.Services
             this.mapper = mapper;
         }
 
-        public async Task<Tuple<ModelStateDictionary, Guid>> CreateAsync(SchedulerModel model)
+        public async Task<List<DetailSchedulerModel>> GetDetailSchedulerAsync(Guid doctorId)
         {
-            ModelStateDictionary keyValuePairs = new ModelStateDictionary();
-            // todo validar se não é o 2 agendamento no mesmo horario
-            var scheduler = mapper.Map<Scheduler>(model);
-            var doctorPatient = await doctorPatientRepository.AddAsync(scheduler.DoctorPatient);
-
-            scheduler.MeetAddressLink = "https://meet.google.com/wrc-ztqa-vji";
-            scheduler.DoctorPatientId = doctorPatient.Id;
-            await schedulerrepository.AddAsync(scheduler);
-            //todo pegar do google calendar
-            return new Tuple<ModelStateDictionary, Guid>(keyValuePairs, scheduler.Id);
+            return await confirmSchedulerrepository.ListByConditionAsync(x => x.DoctorPatient.Doctor.Id.Equals(doctorId));
         }
 
-        public async Task<DetailSchedulerModel> GetConfirmSchedulerAsync(Guid guid)
+        public async Task<List<DetailSolicitationModel>> GetDetailSolicitationAsync(Guid doctorId)
         {
-            return await confirmSchedulerrepository.GetModelByIdAsync(guid);
-        }
-
-        public async Task<DetailSolicitationModel> GetConfirmSolicitationAsync(Guid guid)
-        {
-            return await confirmSolicitationrepository.GetModelByIdAsync(guid);
+            return await confirmSolicitationrepository.ListByConditionAsync(x => x.DoctorPatient.Doctor.Id.Equals(doctorId));
         }
     }
 }
