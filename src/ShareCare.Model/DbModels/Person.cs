@@ -9,7 +9,8 @@ namespace ShareCare.Model.DbModels
 
         public PersonType Type { get; set; }
 
-        public List<Contact> Contacts { get; set; }
+        public string Password { get; set; }
 
+        public List<Contact> Contacts { get; set; }
     }
 }

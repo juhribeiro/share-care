@@ -9,7 +9,5 @@ namespace ShareCare.Model.DbModels
         public Guid DoctorId { get; set; }
 
         public Doctor Doctor { get; set; }
-
-        public Scheduler Scheduler { get; set; }
     }
 }

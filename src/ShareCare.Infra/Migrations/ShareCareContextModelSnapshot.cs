@@ -147,6 +147,9 @@ namespace ShareCare.Infra.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
@@ -175,19 +178,22 @@ namespace ShareCare.Infra.Migrations
                     b.Property<Guid>("DoctorPatientId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("SpecialtyId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("MeetAddressLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Specialty")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DoctorPatientId");
-
-                    b.HasIndex("SpecialtyId")
-                        .IsUnique();
 
                     b.ToTable("Schedulers");
                 });
@@ -217,6 +223,9 @@ namespace ShareCare.Infra.Migrations
                     b.HasBaseType("ShareCare.Model.DbModels.Person");
 
                     b.Property<string>("CRM")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasDiscriminator().HasValue(0);
@@ -286,12 +295,6 @@ namespace ShareCare.Infra.Migrations
                         .WithMany("Schedulers")
                         .HasForeignKey("DoctorPatientId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ShareCare.Model.DbModels.Specialty", "Specialty")
-                        .WithOne("Scheduler")
-                        .HasForeignKey("ShareCare.Model.DbModels.Scheduler", "SpecialtyId")
-                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
                 });
 

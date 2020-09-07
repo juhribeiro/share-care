@@ -11,11 +11,6 @@ namespace ShareCare.Infra.Configuration
             builder.Property(x => x.Value)
                 .IsRequired();
 
-            builder.HasOne(c => c.Scheduler)
-             .WithOne(e => e.Specialty)
-             .HasForeignKey<Scheduler>(x => x.SpecialtyId)
-             .OnDelete(DeleteBehavior.NoAction);
-
             builder.AddValuesInMapper();
         }
     }

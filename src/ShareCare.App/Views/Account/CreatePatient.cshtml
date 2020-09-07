@@ -1,0 +1,140 @@
+﻿@model SimplePatientModel
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Create Patient";
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Fontfaces CSS-->
+    <link href="~/css/font-face.css" rel="stylesheet" media="all">
+    <link href="~/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="~/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!--  FullCalendar-->
+    <link href='vendor/fullcalendar-3.10.0/fullcalendar.css' rel='stylesheet' media="all" />
+
+    <!-- Vendor CSS-->
+    <link href="~/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="~/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="~/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="~/css/theme.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <div class="page-content--bge5">
+            <div class="container">
+                <div class="login-wrap">
+                    <div class="login-content">
+                        <div class="login-logo">
+                            <a href="#">
+                                <img src="~/img/icon/logo.png" alt="CoolAdmin">
+                            </a>
+                        </div>
+                        <div class="col-md-12">
+                            <form asp-action="CreatePatient">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label"> Nome</label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+
+                                @for (int i = 0; i < Model.Contacts.Count; i++)
+                                {
+                                    if (Model.Contacts[i].Type == ContactType.Email)
+                                    {
+                                        <input type="hidden" readonly="readonly" asp-for="@Model.Contacts[i].Type" class="form-control" />
+                                        <input type="hidden" readonly="readonly" asp-for="Contacts[i].Value" class="form-control" />
+                                    }
+                                    else
+                                    {
+                                        <div class="form-group">
+                                            <input type="hidden" readonly="readonly" asp-for="@Model.Contacts[i].Type" class="form-control" />
+                                            <label asp-for="Contacts" class="control-label"> Telefone</label>
+                                            <input asp-for="Contacts[i].Value" class="form-control" />
+                                            <span asp-validation-for="Contacts" class="text-danger"></span>
+                                        </div>
+                                    }
+                                }
+
+                                <input type="hidden" readonly="readonly" asp-for="Password" class="form-control" />
+                                <input type="hidden" readonly="readonly" asp-for="Type" class="form-control" />
+
+                                <div class="form-group">
+                                    <input type="submit" value="Cria" class="btn btn-primary" />
+                                </div>
+                            </form>
+                            <div class="register-link">
+                                <p>
+                                    Você já tem conta?
+                                    <a class="au-btn au-btn--block m-b-20" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+    <!-- Jquery JS-->
+    <script src="~/vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="~/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="~/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="~/vendor/slick/slick.min.js">
+    </script>
+    <script src="~/vendor/wow/wow.min.js"></script>
+    <script src="~/vendor/animsition/animsition.min.js"></script>
+    <script src="~/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="~/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="~/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="~/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="~/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="~/vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="~/js/main.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="~/vendor/jquery-3.2.1.min.js"></script>
+    <script src="https://plugin.handtalk.me/web/latest/handtalk.min.js"></script>
+    <script>
+        var ht = new HT({
+            token: "c7ef6ef76b6650078ee78509e146bffb"
+        });
+    </script>
+
+    <script>(function () { var s = document.createElement('script'), e = !document.body ? document.querySelector('head') : document.body; s.src = 'https://acsbapp.com/apps/app/assets/js/acsb.js'; s.async = s.defer = true; s.onload = function () { acsbJS.init({ statementLink: '', feedbackLink: '', footerHtml: '', hideMobile: false, hideTrigger: false, language: 'en', position: 'right', leadColor: '#146FF8', triggerColor: '#146FF8', triggerRadius: '50%', triggerPositionX: 'right', triggerPositionY: 'bottom', triggerIcon: 'default', triggerSize: 'medium', triggerOffsetX: 20, triggerOffsetY: 20, mobile: { triggerSize: 'small', triggerPositionX: 'right', triggerPositionY: 'center', triggerOffsetX: 0, triggerOffsetY: 0, triggerRadius: '50%' } }); }; e.appendChild(s); }());</script>
+
+
+</body>
+</html>

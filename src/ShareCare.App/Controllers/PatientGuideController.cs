@@ -1,26 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ShareCare.App.Extensions;
+using ShareCare.Model.Interfaces;
+using System;
+using System.Threading.Tasks;
 
 namespace ShareCare.App.Controllers
 {
+    [Authorize]
     public class PatientGuideController : Controller
     {
-        public PatientGuideController()
-        {
+        private readonly IPatientGuideService patientGuideService;
 
+        public PatientGuideController(IPatientGuideService patientGuideService)
+        {
+            this.patientGuideService = patientGuideService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var identifier = HttpContext.GetIdentifier();
+            var patients = await patientGuideService.GetListAsync(identifier);
+            return View(patients);
+        }
+
+        public IActionResult Details(Guid id)
+        {
+            //todo analise metrica paciente
             return View();
         }
 
-        public IActionResult List()
+        public async Task<IActionResult> Historic(Guid patientId)
         {
-            return View();
+            var historic = await patientGuideService.GetHistoricAsync(patientId);
+            //todo analise metrica paciente
+            return View(historic);
         }
     }
 }

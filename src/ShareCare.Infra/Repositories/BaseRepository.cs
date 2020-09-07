@@ -34,6 +34,7 @@ namespace ShareCare.Infra.Repositories
 
         public async Task<TBaseModel> AddAsync(TBaseDbModel entity)
         {
+            entity.Id = Guid.NewGuid();
             await setDb.AddAsync(entity);
             await context.SaveChangesAsync();
             return mapper.Map<TBaseModel>(entity);
