@@ -5,84 +5,215 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    h4 {
+        top: 99px;
+        left: 415px;
+        width: 400px;
+        height: 35px;
+        color: var(--unnamed-color-ffffff);
+        text-align: left;
+        font: normal normal bold 25px/38px Poppins;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    h5 {
+        top: 139px;
+        left: 415px;
+        width: 800px;
+        height: 28px;
+        color: var(--unnamed-color-ffffff);
+        text-align: left;
+        font: normal normal normal 20px/30px Poppins;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    th {
+        top: 221px;
+        left: 525px;
+        width: 43px;
+        height: 20px;
+        text-align: left;
+        font: normal normal bold 14px/21px Poppins;
+        letter-spacing: 0px;
+        color: #3D3D3D;
+        opacity: 1;
+    }
+
+    tr {
+        top: 251px;
+        left: 440px;
+        width: 771px;
+        height: 121px;
+        background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        opacity: 1;
+    }
+</style>
+
 <div class="col-md-12">
     <div class="table-data__tool">
         <div class="table-data__tool-right">
-            <div class="rs-select2--light rs-select2--md">
-                @{var specialtiesfilter = Model.SelectMany(x => x.Specialties);}
-                @Html.DropDownListFor(m => specialtiesfilter, new SelectList(specialtiesfilter), "Especialidades", new { @class = "js-select2" })
-                <div class="dropDownSelect2"></div>
+            <h4 style="color: white; top: 99px;">Meu guia médico</h4>
+            <h5 style="color:white; top:139px;">Acesse a agenda do profissional da sua escolha e marque uma consulta</h5>
+        </div>
+    </div>
+    <div class="col">
+        <div class="au-card">
+            <div class="row row-cols-1">
+                <div class="col">
+                    <h4 style="color:black">Guia médico > Cardiologia</h4>
+                </div>
             </div>
-            <div class="rs-select2--light rs-select2--sm">
-                <select class="js-select2" name="time">
-                    <option selected="selected">Horarios</option>
-                    <option value="">7:00</option>
-                    <option value="">8:00</option>
-                    <option value="">9:00</option>
-                    <option value="">10:00</option>
-                </select>
-                <div class="dropDownSelect2"></div>
+            <br />
+            <div class="row row-cols-1">
+                <div class="col">
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#1CA5B8; background-color:white; border: none;">
+                            Especialização médica
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="btn-group">
+                        <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#1CA5B8; background-color:white; border: none;">
+                            Disponibilidade
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive table-responsive-data2">
+                <div class="card-name">
+                    <table class="table table-data2">
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <br />
+                                <tr>
+                                    <td>
+                                        <div class="image img-40">
+                                            @{ var img = $"{item.SimpleName}.jpg"; }
+                                            <img src="~/img/icon/@img" alt="@item.SimpleName" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span style="font: normal normal bold 18px/27px Poppins;letter-spacing: 0px;color: #002D42;opacity: 1;">@Html.DisplayFor(modelItem => item.Name)</span>
+                                        <br />
+                                        CRM - @Html.DisplayFor(modelItem => item.CRM)
+                                        <br />
+                                        @{ string specialties = string.Join(",", item.Specialties);}
+                                        @specialties
+                                    </td>
+                                    <td class="desc">
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <div class="table-data-feature">
+                                            @Html.ActionLink("Agendar", "Index", "Scheduler", new { id = item.Id, shedulertype = PersonType.Doctor, specialties = specialties }, new { @class = "btn btn-primary", @style = "background-color: #FD7E14; color: white; border: none;" })
+                                        </div>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-    <div class="table-responsive table-responsive-data2">
-        <table class="table table-data2">
-            <thead>
-                <tr>
-                    <th>
-                        Avatar
-                    </th>
-
-                    <th>Nome</th>
-
-                    <th>Email</th>
-
-                    <th>Especialidade</th>
-
-                    <th>Status</th>
-
-                    <th>Descrição</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr class="tr-shadow">
-                        <td>
-                            <div class="image img-40">
-                                @{ var img = $"{item.SimpleName}.jpg"; }
-                                <img src="~/img/icon/@img" alt="@item.SimpleName" />
-                            </div>
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td class="desc">
-                            @{ string email = item.Contacts.FirstOrDefault(x => x.Type == ContactType.Email).Value;}
-                            <span>@email</span>
-                        </td>
-                        <td>
-                            @{ string specialties = string.Join(",", item.Specialties);}
-                            @specialties
-                        </td>
-                        <td>
-                            <span class="status--process">Livre</span>
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Description)
-                        </td>
-                        <td>
-                            <div class="table-data-feature">
-                                @Html.ActionLink("Agendar", "Index", "Scheduler", new { id = item.Id, shedulertype = PersonType.Doctor, specialties = specialties }, new { @class = "btn btn-primary" })
-                            </div>
-
-                        <td>
-                        </td>
-
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
 </div>
+
+
+@*<div class="col-md-12">
+        <div class="table-data__tool">
+            <div class="table-data__tool-right">
+                <div class="rs-select2--light rs-select2--md">
+                    @{var specialtiesfilter = Model.SelectMany(x => x.Specialties);}
+                    @Html.DropDownListFor(m => specialtiesfilter, new SelectList(specialtiesfilter), "Especialidades", new { @class = "js-select2" })
+                    <div class="dropDownSelect2"></div>
+                </div>
+                <div class="rs-select2--light rs-select2--sm">
+                    <select class="js-select2" name="time">
+                        <option selected="selected">Horarios</option>
+                        <option value="">7:00</option>
+                        <option value="">8:00</option>
+                        <option value="">9:00</option>
+                        <option value="">10:00</option>
+                    </select>
+                    <div class="dropDownSelect2"></div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive table-responsive-data2">
+            <table class="table table-data2">
+                <thead>
+                    <tr>
+                        <th>
+                            Avatar
+                        </th>
+
+                        <th>Nome</th>
+
+                        <th>Email</th>
+
+                        <th>Especialidade</th>
+
+                        <th>Status</th>
+
+                        <th>Descrição</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="tr-shadow">
+                            <td>
+                                <div class="image img-40">
+                                    @{ var img = $"{item.SimpleName}.jpg"; }
+                                    <img src="~/img/icon/@img" alt="@item.SimpleName" />
+                                </div>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td class="desc">
+                                @{ string email = item.Contacts.FirstOrDefault(x => x.Type == ContactType.Email).Value;}
+                                <span>@email</span>
+                            </td>
+                            <td>
+                                @{ string specialties = string.Join(",", item.Specialties);}
+                                @specialties
+                            </td>
+                            <td>
+                                <span class="status--process">Livre</span>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td>
+                                <div class="table-data-feature">
+                                    @Html.ActionLink("Agendar", "Index", "Scheduler", new { id = item.Id, shedulertype = PersonType.Doctor, specialties = specialties }, new { @class = "btn btn-primary" })
+                                </div>
+
+                            <td>
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>*@
