@@ -5,27 +5,91 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h4>DiaryModel</h4>
-<hr />
+<style>
+    h4 {
+        top: 99px;
+        left: 415px;
+        width: 400px;
+        height: 35px;
+        color: var(--unnamed-color-ffffff);
+        text-align: left;
+        font: normal normal bold 25px/38px Poppins;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    h5 {
+        top: 139px;
+        left: 415px;
+        width: 800px;
+        height: 28px;
+        color: var(--unnamed-color-ffffff);
+        text-align: left;
+        font: normal normal normal 20px/30px Poppins;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    th {
+        top: 221px;
+        left: 525px;
+        width: 43px;
+        height: 20px;
+        text-align: left;
+        font: normal normal bold 14px/21px Poppins;
+        letter-spacing: 0px;
+        color: #3D3D3D;
+        opacity: 1;
+    }
+
+    tr {
+        top: 251px;
+        left: 440px;
+        width: 771px;
+        height: 121px;
+        background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        opacity: 1;
+    }
+</style>
+
+
+
 <div class="col-md-12">
-    <form asp-action="Create">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="Value" class="control-label"></label>
-            <input asp-for="Value" class="form-control" />
-            <span asp-validation-for="Value" class="text-danger"></span>
+    <div class="table-data__tool">
+        <div class="table-data__tool-right">
+            <h4 style="color: white; top: 99px;">Meu diário médico:</h4>
+            <h5 style="color:white; top:139px;">Acesse a sua agenda e salve informações diárias sobre a sua saúde</h5>
         </div>
-        <div class="form-group">
-            <label asp-for="DataAnnotation" class="control-label"></label>
-            <input type="hidden" readonly="readonly" asp-for="DataAnnotation" class="form-control" />
-            <span asp-validation-for="DataAnnotation" class="text-danger"></span>
-        </div>
+    </div>
+    <div class="col">
+        <div class="au-card">
+            <br />
+            <div class="card-body">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Value" class="control-label"><h5 style="color: black; top: 99px;">Sintomas</h5></label>
+                        <input asp-for="Value" class="form-control" />
+                        <span asp-validation-for="Value" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        @*<label asp-for="DataAnnotation" class="control-label"></label>*@
+                        <input type="hidden" readonly="readonly" asp-for="DataAnnotation" class="form-control" />
+                        <span asp-validation-for="DataAnnotation" class="text-danger"></span>
+                    </div>
 
-        <input type="hidden" readonly="readonly" asp-for="PatientId" class="form-control" />
+                    <input type="hidden" readonly="readonly" asp-for="PatientId" class="form-control" />
 
-        <div class="form-group">
-            <input type="submit" value="Create" class="btn btn-primary" />
+                    <div class="form-group">
+                        <input style="background-color: #FD7E14; color: white; border: none; " type="submit" value="Salvar" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
         </div>
-    </form>
+    </div>
 </div>
-
