@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ShareCare.Model.Models
 {
@@ -21,5 +22,7 @@ namespace ShareCare.Model.Models
         public string MeetAddressLink { get; set; }
 
         public string SimpleName => DoctorName.Split(" ")[0];
+
+        public List<EnchiridionModel> Enchiridions { get; set; }
     }
 }

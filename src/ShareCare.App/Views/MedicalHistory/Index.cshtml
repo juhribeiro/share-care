@@ -150,7 +150,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row row-cols-3">
-                        <div class="col"  style="color:black;font: normal normal bold 16px/25px Poppins;">Anotações do médico</div>
+                        <div class="col" style="color:black;font: normal normal bold 16px/25px Poppins;">Anotações do médico</div>
                         <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Receitas</div>
                         <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Exames</div>
                         <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Atestados</div>
@@ -179,19 +179,17 @@
                                             <b style="font: normal normal bold 18px/27px Poppins;">
                                                 @Html.DisplayFor(modelItem => item.Name)
                                             </b>
-                                            CRM - @Html.DisplayFor(modelItem => item.CRM, new { @style = "font: normal normal normal 18px/27px Poppins;"})
+                                            CRM - @Html.DisplayFor(modelItem => item.CRM, new { @style = "font: normal normal normal 18px/27px Poppins;" })
                                         </div>
                                     </div>
 
                                     <br />
-                                    @foreach (var i in item.Enchiridion)
-                                    {
-                                        <br />
-                                        <span>
-                                            @Html.DisplayFor(modelItem => i.Value)
-                                        </span>
-                                        <br />
-                                    }
+
+                                    @{var healthHistory = item.Enchiridion.SingleOrDefault(x => x.Type == EnchiridionType.HealthHistory);}
+                                    <span>
+                                        @healthHistory?.Value
+                                    </span>
+
 
                                 </div>
                             </form>

@@ -42,10 +42,12 @@ namespace ShareCare.Model.Mapper
                 .ForMember(x => x.Email, o => o.MapFrom(x => x.Contacts.First().Value));
 
             CreateMap<DiaryModel, Diary>()
+                 .ForPath(x => x.PatientId, o => o.MapFrom(x => x.PatientId))
                .ReverseMap();
 
             CreateMap<Scheduler, DetailSchedulerModel>()
                  .ForMember(x => x.DoctorId, o => o.MapFrom(x => x.DoctorPatient.Doctor.Id))
+                 .ForMember(x => x.Description, o => o.MapFrom(x => x.Description))
                  .ForMember(x => x.DoctorName, o => o.MapFrom(x => x.DoctorPatient.Doctor.Name))
                  .ForMember(x => x.MeetAddressLink, o => o.MapFrom(x => x.MeetAddressLink));
 

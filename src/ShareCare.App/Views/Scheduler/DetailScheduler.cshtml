@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "ConfirmScheduler";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var healthHistory = Model.Enchiridions.SingleOrDefault(x => x.Type == EnchiridionType.HealthHistory);
 }
 
 
@@ -99,7 +100,7 @@
                                     </td>
                                     <td>
                                         <span style="font: normal normal bold 18px/27px Poppins;letter-spacing: 0px;color: #002D42;opacity: 1;">@Html.DisplayFor(model => model.DoctorName)</span>
-                                         <br />@Html.DisplayFor(model => model.Specialty)
+                                        <br />@Html.DisplayFor(model => model.Specialty)
                                     </td>
                                     <td class="desc">
                                     </td>
@@ -117,7 +118,7 @@
                 <br />
                 <h6>@Html.DisplayNameFor(model => model.Description)</h6>
                 <br />
-                <div class="card"  style="background-color:#E4E4E4">
+                <div class="card" style="background-color:#E4E4E4">
                     <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                         <br />
                         <h6 class="desc" style="text-align:center;font-size:larger; font: normal normal normal 14px/21px Poppins;">
@@ -152,13 +153,14 @@
                     <div class="card-body">
                         <br />
                         <div class="row form-group">
-                            <div class="col-12 col-md-12">
-                                @Html.DisplayFor(model => model.Description)
-                            </div>
+                            <br />
+                        <div class="col-12 col-md-12">
+                            @healthHistory?.Value
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
