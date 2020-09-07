@@ -1,0 +1,128 @@
+﻿@model IEnumerable<ShareCare.Model.Models.EnchiridionDoctorModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Meu histórico médico</h1>
+
+<p>
+    Acesse seu historico médico
+</p>
+<br />
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="rs-select2--light rs-select2--sm">
+                        <select class="js-select2" name="time">
+                            <option selected="selected">Horarios</option>
+                            <option value="">7:00</option>
+                            <option value="">8:00</option>
+                            <option value="">9:00</option>
+                            <option value="">10:00</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+                    <div class="rs-select2--light rs-select2--sm">
+                        <select class="js-select2" name="time">
+                            <option selected="selected">Horarios</option>
+                            <option value="">7:00</option>
+                            <option value="">8:00</option>
+                            <option value="">9:00</option>
+                            <option value="">10:00</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+
+                    <div class="rs-select2--light rs-select2--sm">
+                        <select class="js-select2" name="time">
+                            <option selected="selected">Horarios</option>
+                            <option value="">7:00</option>
+                            <option value="">8:00</option>
+                            <option value="">9:00</option>
+                            <option value="">10:00</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="rs-select2--light rs-select2--sm">
+                        <select class="js-select2" name="time">
+                            <option selected="selected">Horarios</option>
+                            <option value="">7:00</option>
+                            <option value="">8:00</option>
+                            <option value="">9:00</option>
+                            <option value="">10:00</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+                    <div class="rs-select2--light rs-select2--sm">
+                        <select class="js-select2" name="time">
+                            <option selected="selected">Horarios</option>
+                            <option value="">7:00</option>
+                            <option value="">8:00</option>
+                            <option value="">9:00</option>
+                            <option value="">10:00</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+
+                    <div class="rs-select2--light rs-select2--sm">
+                        <select class="js-select2" name="time">
+                            <option selected="selected">Horarios</option>
+                            <option value="">7:00</option>
+                            <option value="">8:00</option>
+                            <option value="">9:00</option>
+                            <option value="">10:00</option>
+                        </select>
+                        <div class="dropDownSelect2"></div>
+                    </div>
+
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="rs-select2--light rs-select2--md">
+                        @{var specialtiesfilter = Model.Select(x => x.Specialty).Distinct();}
+                        @Html.DropDownListFor(m => specialtiesfilter, new SelectList(specialtiesfilter), "Especialidades", new { @class = "js-select2" })
+                        <div class="dropDownSelect2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="col-4">Histórico</strong>
+                        <strong class="col-4">Consultas</strong>
+                        <strong class="col-4">Receitas</strong>
+                        <strong class="col-3">Exames</strong>
+                        <strong class="col-4">Atestados</strong>
+                    </div>
+                    @foreach (var item in Model)
+                    {<div class="card-body card-block">
+                            @Html.DisplayFor(modelItem => item.DataStart)
+
+                            @{var img = $"{item.Name.Split(" ")[0]}.jpg"; }
+                         <div class="image img-cir img-40">
+                             <img src="~/img/icon/@img" alt="@item.Name" />
+                         </div>
+                             @Html.DisplayFor(modelItem => item.Name)
+                            <b>Crm-Pr</b> @Html.DisplayFor(modelItem => item.CRM)
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
