@@ -7,6 +7,27 @@
         <div id="calendar"></div>
     </div>
 </div>
+
+<div id="teste" class="modal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <strong class="col-4">Sintomas</strong>
+                <div class="row form-group">
+                    <div class="col-12 col-md-12">
+                        <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <button type="submit" class="btn btn-success" asp-area="" asp-controller="Home" asp-action="Index">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
 <script src="~/vendor/jquery-3.2.1.min.js"></script>
 <script src="~/vendor/fullcalendar-3.10.0/lib/moment.min.js"></script>
 <script src="~/vendor/fullcalendar-3.10.0/fullcalendar.js"></script>
@@ -43,19 +64,18 @@
             });
         }
 
-                // setup a few events
-                $('#calendar').fullCalendar({
-                    header: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'month,agendaWeek,agendaDay,listWeek'
-                    },
-                    events: events.concat(trivia_nights),
-                    dayClick: function () {
-                        $("#myModal").modal()
-                    }
-                });
-            });
-        </script>
-</body >
-
+        // setup a few events
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay,listWeek'
+            },
+            events: events.concat(trivia_nights),
+            dayClick: function () {
+                $("#teste").modal();
+                $('.modal-backdrop').remove();
+            }
+        });
+    });
+</script>
