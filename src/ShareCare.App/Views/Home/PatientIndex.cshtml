@@ -1,5 +1,9 @@
-﻿@{
+﻿@model Tuple<IEnumerable<DetailSchedulerModel>, IEnumerable<DiaryModel>>
+
+@{
     ViewData["Title"] = "Home Page";
+    var order = Model.Item1.OrderBy(x => x.DateStart);
+    var diaryOrder = Model.Item2.OrderBy(x => x.DataAnnotation);
 }
 
 <div class="col">
@@ -33,39 +37,49 @@
 <script src="~/vendor/jquery-3.2.1.min.js"></script>
 <script src="~/vendor/fullcalendar-3.10.0/lib/moment.min.js"></script>
 <script src="~/vendor/fullcalendar-3.10.0/fullcalendar.js"></script>
+
+<script>
+    var events = [];
+    var annotations = [];
+</script>
+
+
+@foreach (var item in order)
+{
+    <script type="text/javascript">
+
+    var event =
+    {
+        title: '@item.Specialty.ToSentenceCase() - @item.SimpleName',
+        start: '@item.DateStart.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'FFF'Z'")',
+        allDay: false,
+        url: '/Scheduler/DetailScheduler?schedulerId=@item.Id',
+        color: '#FF404F',
+    };
+    events.push(event);
+    </script>
+}
+
+@foreach (var item in diaryOrder)
+{
+<script type="text/javascript">
+
+    var annotation =
+    {
+        title: '@item.Value',
+        start: '@item.DataAnnotation.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'FFF'Z'")',
+        allDay: false,
+        url: '#',
+    };
+
+    annotations.push(annotation);
+</script>
+}
+
+
 <script type="text/javascript">
     $(function () {
-        // for now, there is something adding a click handler to 'a'
-        var tues = moment().day(2).hour(19);
-
-        // build trival night events for example data
-        var events = [
-            {
-                title: "Special Conference",
-                start: moment().format('YYYY-MM-DD'),
-                url: '#'
-            },
-            {
-                title: "Doctor Appt",
-                start: moment().hour(9).add(2, 'days').toISOString(),
-                url: '#'
-            }
-
-        ];
-
-        var trivia_nights = []
-
-        for (var i = 1; i <= 4; i++) {
-            var n = tues.clone().add(i, 'weeks');
-            console.log("isoString: " + n.toISOString());
-            trivia_nights.push({
-                title: 'Trival Night  Pub XYZ',
-                start: n.toISOString(),
-                allDay: false,
-                url: '#'
-            });
-        }
-
+     
         // setup a few events
         $('#calendar').fullCalendar({
             header: {
@@ -73,7 +87,19 @@
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay,listWeek'
             },
-            events: events.concat(trivia_nights),
+            events: events.concat(annotations),
+            monthNames: ['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+            buttonText: {
+                prev: "<",
+                next: ">",
+                today: "Hoje",
+                month: "Mês",
+                week: "Semana",
+                day: "Dia"
+            },
             dayClick: function () {
                 $("#teste").modal();
                 $('.modal-backdrop').remove();

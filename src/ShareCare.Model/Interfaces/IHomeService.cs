@@ -7,8 +7,10 @@ namespace ShareCare.Model.Interfaces
 {
     public interface IHomeService
     {
-        Task<List<DetailSchedulerModel>> GetDetailSchedulerAsync(Guid doctorId);
+        Task<List<DetailSchedulerModel>> GetDetailSchedulerAsync(Guid patientId);
 
         Task<List<DetailSolicitationModel>> GetDetailSolicitationAsync(Guid doctorId);
+
+        Task<List<DiaryModel>> GetDiaryAsync(Guid patientId);
     }
 }

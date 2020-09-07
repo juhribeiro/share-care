@@ -5,7 +5,9 @@ using ShareCare.App.Extensions;
 using ShareCare.App.Models;
 using ShareCare.Model.Enums;
 using ShareCare.Model.Interfaces;
+using ShareCare.Model.Models;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Claims;
@@ -38,7 +40,10 @@ namespace ShareCare.App.Controllers
             }
             else
             {
-                return View("PatientIndex");
+                var schedulers = await homeService.GetDetailSchedulerAsync(identify);
+                var dairies = await homeService.GetDiaryAsync(identify);
+                var tupleData = new Tuple<IEnumerable<DetailSchedulerModel>, IEnumerable<DiaryModel>>(schedulers, dairies);
+                return View("PatientIndex", tupleData);
             }
         }
 
