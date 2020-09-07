@@ -321,35 +321,72 @@
                 </header>
                 <!-- HEADER DESKTOP-->
                 <!-- MAIN CONTENT-->
-                <div class="main-content">
-                    <div class="section__content section__content--p30">
-                        <div class="container-fluid">
-                            <div class="row">
-                                @RenderBody()
+                @if (isDoctor)
+                {
+                    <div class="main-content" style="background-color: #F46A79">
+                        <div class="section__content section__content--p30">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    @RenderBody()
+                                </div>
+                            </div>
+                            <div id="myModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <strong class="col-4">Sintomas</strong>
+                                            <div class="row form-group">
+                                                <div class="col-12 col-md-12">
+                                                    <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div>
+                                                    <button type="submit" class="btn btn-success" asp-area="" asp-controller="Home" asp-action="Index">Salvar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
                             </div>
                         </div>
-                        <div id="myModal" class="modal fade" role="dialog">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <strong class="col-4">Sintomas</strong>
-                                        <div class="row form-group">
-                                            <div class="col-12 col-md-12">
-                                                <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div>
-                                                <button type="submit" class="btn btn-success" asp-area="" asp-controller="Home" asp-action="Index">Salvar</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div>
+
                     </div>
-                    
-                </div>
+
+                }
+                else
+                {
+                    <div class="main-content" style="background-color: #1CA5B8">
+                        <div class="section__content section__content--p30">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    @RenderBody()
+                                </div>
+                            </div>
+                            <div id="myModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <strong class="col-4">Sintomas</strong>
+                                            <div class="row form-group">
+                                                <div class="col-12 col-md-12">
+                                                    <textarea name="textarea-input" id="textarea-input" rows="9" placeholder="Content..." class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div>
+                                                    <button type="submit" class="btn btn-success" asp-area="" asp-controller="Home" asp-action="Index">Salvar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- /.modal-content -->
+                                </div><!-- /.modal-dialog -->
+                            </div>
+                        </div>
+
+                    </div>
+
+                }
                 <!-- END MAIN CONTENT-->
             </div>
         </div>

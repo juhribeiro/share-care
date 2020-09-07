@@ -5,12 +5,85 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    h4 {
+        top: 99px;
+        left: 415px;
+        width: 290px;
+        height: 35px;
+        color: var(--unnamed-color-ffffff);
+        text-align: left;
+        font: normal normal bold 25px/38px Poppins;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    h5 {
+        top: 139px;
+        left: 415px;
+        width: 660px;
+        height: 28px;
+        color: var(--unnamed-color-ffffff);
+        text-align: left;
+        font: normal normal normal 20px/30px Poppins;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    th {
+        top: 221px;
+        left: 525px;
+        width: 43px;
+        height: 20px;
+        text-align: left;
+        font: normal normal bold 14px/21px Poppins;
+        letter-spacing: 0px;
+        color: #3D3D3D;
+        opacity: 1;
+    }
+
+    tr {
+        top: 251px;
+        left: 440px;
+        width: 771px;
+        height: 121px;
+        background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        opacity: 1;
+    }
+</style>
+
 <div class="col-md-12">
     <div class="table-data__tool">
         <div class="table-data__tool-right">
+            <h4 style="color: white; top: 99px;">Meu guia de pacientes</h4>
+            <h5 style="color:white; top:139px;">Acesse todas as informações que você precisa de seus pacientes</h5>
+        </div>
+    </div>
+    <div class="col">
+        <div class="au-card">
             <div class="rs-select2--light rs-select2--md">
                 @{var patients = Model.Select(x => x.Name);}
                 @Html.DropDownListFor(m => patients, new SelectList(patients), "Nomes", new { @class = "js-select2" })
+                <div class="dropDownSelect2"></div>
+            </div>
+            <div class="rs-select2--light rs-select2--sm">
+                <select class="js-select2" name="time">
+                    <option selected="selected">Email</option>
+                    <option value="">juliane@gmail.com</option>
+                    <option value="">a_bittencourt86@gmail.com</option>
+                </select>
+                <div class="dropDownSelect2"></div>
+            </div>
+            <div class="rs-select2--light rs-select2--sm">
+                <select class="js-select2" name="time">
+                    <option selected="selected">Consulta</option>
+                    <option value="">Cardiologia</option>
+                    <option value="">Pediatria</option>
+                </select>
                 <div class="dropDownSelect2"></div>
             </div>
             <div class="rs-select2--light rs-select2--sm">
@@ -23,59 +96,51 @@
                 </select>
                 <div class="dropDownSelect2"></div>
             </div>
+            <div class="table-responsive table-responsive-data2">
+                <div class="card-name">
+                    <table class="table table-data2">
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <br />
+                                <tr>
+                                    <td>
+                                        <div class="image img-40">
+                                            @{ var img = $"{item.SimpleName}.jpg"; }
+                                            <img src="~/img/icon/@img" alt="@item.SimpleName" />
+                                        </div>
+                                    </td>
+
+                                    <td style="text-align: left;font: normal normal bold 14px/21px Poppins;letter-spacing: 0px;color: #3D3D3D;">
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+
+                                    <td class="desc">
+                                        @{ string email = item.Contacts.FirstOrDefault(x => x.Type == ContactType.Email).Value;}
+                                        <span>@email</span>
+                                    </td>
+                                    @*<td>
+                                    @{ var phones = item.Contacts.Where(x => x.Type == ContactType.Phone).Select(x => x.Value);
+                                        string phonesnumbers = string.Join(",", phones);
+                                    }
+                                    @phonesnumbers
+                                </td>*@
+                                    <td>
+                                        @item.Specialty
+                                    </td>
+                                    @*<th> @Html.DisplayFor(modelItem => item.Specialty)</th>*@
+                                    <td>
+                                        @Html.ActionLink("", "Details", new { id = item.Id }, new { @style = "margin:10px; color: #1CA5B8;top: 299px;left: 1087px;width: 32px;height: 24px;", @class = "fas fa-chart-bar fa-2x" })
+                                        @Html.ActionLink("", "Historic", new { patientId = item.Id }, new { @style = "margin:10px; color: #1CA5B8;top: 443px;left: 1136px;width: 21px;height: 24px;", @class = "fas fa-chart-bar fa-2x" })
+                                        @Html.ActionLink("", "Index", "Scheduler", new { id = item.Id, shedulertype = PersonType.Patient, specialties = item.Specialty }, new { @class = "fas fa-calendar-alt fa-2x", @style = "margin:10px;color: #1CA5B8; top: 299px;left: 1174px;width: 21px;height: 24px;" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="table-responsive table-responsive-data2">
-        <table class="table table-data2">
-            <thead>
-                <tr>
-                    <th>
-                        Avatar
-                    </th>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Telefone</th>
-                    <th>Atendimento</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                            <div class="image img-40">
-                                @{ var img = $"{item.SimpleName}.jpg"; }
-                                <img src="~/img/icon/@img" alt="@item.SimpleName" />
-                            </div>
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-
-                        <td class="desc">
-                            @{ string email = item.Contacts.FirstOrDefault(x => x.Type == ContactType.Email).Value;}
-                            <span>@email</span>
-                        </td>
-                        @*<td>
-                                @{ var phones = item.Contacts.Where(x => x.Type == ContactType.Phone).Select(x => x.Value);
-                                    string phonesnumbers = string.Join(",", phones);
-                                }
-                                @phonesnumbers
-                            </td>*@
-                        <td>
-                            @item.Specialty
-                        </td>
-                        @*<th> @Html.DisplayFor(modelItem => item.Specialty)</th>*@
-                    <td>
-                        @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Histórico", "Historic", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Solicitar Agendar", "Index", "Scheduler", new { id = item.Id, shedulertype = PersonType.Patient, specialties = item.Specialty }, new { @class = "btn btn-primary" })
-                    </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
     </div>
 </div>
