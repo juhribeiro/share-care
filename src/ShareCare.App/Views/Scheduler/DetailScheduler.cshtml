@@ -117,11 +117,11 @@
                 <br />
                 <h6>@Html.DisplayNameFor(model => model.Description)</h6>
                 <br />
-                <div class="card">
+                <div class="card"  style="background-color:#E4E4E4">
                     <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                         <br />
-                        <h6 class="desc" style="text-align:center;font-size:larger">
-                            Endereço da consulta
+                        <h6 class="desc" style="text-align:center;font-size:larger; font: normal normal normal 14px/21px Poppins;">
+                            Endereço da consulta:
                         </h6>
                         <br />
                         <h6 class="desc" style="text-align:center; color:#F46A79;font-size:larger">
@@ -129,7 +129,8 @@
                         </h6>
                         <br />
                         <h6 class="desc" style="text-align:center">
-                            <button type="button" class="btn btn-outline-secondary" style="align-content:center">Copiar</button>
+                            <i class="fas fa-files-o fa-2x" style="color:#1CA5B8; border: none"></i> <span style="font: normal normal normal 14px/21px Poppins;">Copiar</span>
+                            @*<button type="button" class="btn btn-outline-secondary" style="align-content:center; background-color:#1CA5B8">Copiar</button>*@
                         </h6>
                         <br />
                     </form>
@@ -139,12 +140,12 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row row-cols-3">
-                        <div class="col" style="color:#F46A79">Anotações do médico</div>
-                        <div class="col">Receitas</div>
-                        <div class="col">Exames</div>
-                        <div class="col">Atestados</div>
-                        <div class="col">Sintomas</div>
-                        <div class="col">Analytics</div>
+                        <div class="col" style="color:black;font: normal normal bold 16px/25px Poppins;">Anotações do médico</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Receitas</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Exames</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Atestados</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Sintomas</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Analytics</div>
                     </div>
                 </div>
                 <div class="card">

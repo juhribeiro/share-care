@@ -66,7 +66,7 @@
     </div>
     <div class="col">
         <div class="au-card">
-            <h5 style="color: black; top: 99px;">Histórico > Cardiologia</h5>
+            <h5 style="color: black; top: 99px;font: normal normal bold 16px/25px Poppins;">Histórico > Cardiologia</h5>
             <br />
             <div class="row row-cols-1">
                 <div class="col">
@@ -79,7 +79,10 @@
             <div class="row row-cols-1">
                 <div class="col">
                     <div class="btn-group">
-                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#1CA5B8; border-bottom-color: #1CA5B8;background-color:white;">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="        color: #1CA5B8;
+        border-bottom-color: #1CA5B8;
+        background-color: white;
+">
                             Dia
                         </button>
                         <div class="dropdown-menu">
@@ -147,11 +150,11 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row row-cols-3">
-                        <div class="col" style="color:#1CA5B8">Anotações do médico</div>
-                        <div class="col">Receitas</div>
-                        <div class="col">Exames</div>
-                        <div class="col">Atestados</div>
-                        <div class="col">Sintomas</div>
+                        <div class="col"  style="color:black;font: normal normal bold 16px/25px Poppins;">Anotações do médico</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Receitas</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Exames</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Atestados</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Sintomas</div>
                     </div>
                 </div>
                 @foreach (var item in Model)
@@ -160,7 +163,7 @@
                         <div class="card-body card-block">
                             <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 <div class="card-body card-block">
-                                    <h6 style=" color:#F46A79">
+                                    <h6 style=" color:#F46A79; font: normal normal bold 18px/27px Poppins;">
                                         @Html.DisplayFor(modelItem => item.DataStart)
                                     </h6>
                                     <br />
@@ -173,10 +176,10 @@
                                             </div>
                                         </div>
                                         <div class="col-2">
-                                            <b>
+                                            <b style="font: normal normal bold 18px/27px Poppins;">
                                                 @Html.DisplayFor(modelItem => item.Name)
                                             </b>
-                                            CRM - @Html.DisplayFor(modelItem => item.CRM)
+                                            CRM - @Html.DisplayFor(modelItem => item.CRM, new { @style = "font: normal normal normal 18px/27px Poppins;"})
                                         </div>
                                     </div>
 

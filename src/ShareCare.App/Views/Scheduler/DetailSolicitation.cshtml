@@ -162,10 +162,10 @@
                 <br />
                 <h6>@Html.DisplayNameFor(model => model.Description)</h6>
                 <br />
-                <div class="card">
+                <div class="card" style="background-color:#E4E4E4">
                     <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                         <br />
-                        <h6 class="desc" style="text-align:center;font-size:larger">
+                        <h6 class="desc" style="text-align:center;font-size:larger; font: normal normal normal 14px/21px Poppins;">
                             Endereço da consulta
                         </h6>
                         <br />
@@ -174,7 +174,8 @@
                         </h6>
                         <br />
                         <h6 class="desc" style="text-align:center">
-                            <button type="button" class="btn btn-outline-secondary" style="align-content:center">Copiar</button>
+                            <i class="fas fa-files-o fa-2x" style="color:#1CA5B8; border: none"></i> <span style="font: normal normal normal 14px/21px Poppins;">Copiar</span>
+                            @*<button type="button" class="btn btn-outline-secondary" style="align-content:center;  background-color:#1CA5B8">Copiar</button>*@
                         </h6>
                         <br />
                     </form>
@@ -183,10 +184,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row row-cols-3">
-                            <div class="col" style="color:#F46A79">Anotações do médico</div>
-                            <div class="col">Receitas Online</div>
-                            <div class="col">Guia do exame</div>
-                            <div class="col">Atestado</div>
+                            <div class="col" style="color:black;font: normal normal bold 16px/25px Poppins;">Anotações do médico</div>
+                            <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Receitas Online</div>
+                            <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Guia do exame</div>
+                            <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Atestado</div>
                         </div>
                     </div>
                     <div class="card">
