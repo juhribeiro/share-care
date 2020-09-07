@@ -70,7 +70,7 @@
                         @*<th> @Html.DisplayFor(modelItem => item.Specialty)</th>*@
                     <td>
                         @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Histórico", "Historic", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Histórico", "Historic", new { id = item.Id }) |
                         @Html.ActionLink("Solicitar Agendar", "Index", "Scheduler", new { id = item.Id, shedulertype = PersonType.Patient, specialties = item.Specialty }, new { @class = "btn btn-primary" })
                     </td>
                     </tr>

@@ -23,11 +23,13 @@ namespace ShareCare.App.Configuration
             services.AddScoped<IBaseRepository<DoctorPatient, DoctorPatientModel>, DoctorPatentRepository>();
             services.AddScoped<IBaseRepository<Scheduler, ConfirmSchedulerModel>, ConfirmSchedulerRepository>();
             services.AddScoped<IBaseRepository<Scheduler, ConfirmSolicitationModel>, ConfirmSolicitationRepository>();
+            services.AddScoped<IBaseRepository<Scheduler, EnchiridionDoctorModel>, EnchiridionDoctorRepository>();
 
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IMedicalGuideService, MedicalGuideService>();
             services.AddScoped<IPatientGuideService, PatientGuideService>();
             services.AddScoped<ISchedulerService, SchedulerService>();
+            services.AddScoped<IMedicalHistoryService, MedicalHistoryService>();
 
             return services;
         }

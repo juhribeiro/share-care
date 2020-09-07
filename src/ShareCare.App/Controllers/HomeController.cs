@@ -20,9 +20,6 @@ namespace ShareCare.App.Controllers
 
         public IActionResult Index()
         {
-            var teste = User.Identity.Name;
-
-            var sasaszx = User.Claims.SingleOrDefault(c => c.Type == ClaimTypes.NameIdentifier).Value;
             return View();
         }
 

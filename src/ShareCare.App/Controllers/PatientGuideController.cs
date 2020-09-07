@@ -30,10 +30,9 @@ namespace ShareCare.App.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Historic(Guid patientId)
+        public async Task<IActionResult> Historic(Guid id)
         {
-            var historic = await patientGuideService.GetHistoricAsync(patientId);
-            //todo analise metrica paciente
+            var historic = await patientGuideService.GetHistoricAsync(id);
             return View(historic);
         }
     }

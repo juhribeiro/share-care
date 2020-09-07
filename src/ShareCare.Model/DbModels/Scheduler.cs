@@ -22,7 +22,7 @@ namespace ShareCare.Model.DbModels
 
         public DoctorPatient DoctorPatient { get; set; }
 
-        public ICollection<Enchiridion> Enchiridions { get; set; }
+        public List<Enchiridion> Enchiridions { get; set; }
 
         public string MeetAddressLink { get; set; }
     }
