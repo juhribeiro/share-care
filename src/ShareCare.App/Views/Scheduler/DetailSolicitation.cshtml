@@ -10,56 +10,56 @@
 
 }
 
-<style>
-    h4 {
-        top: 99px;
-        left: 415px;
-        width: 440px;
-        height: 35px;
-        color: var(--unnamed-color-ffffff);
-        text-align: left;
-        font: normal normal bold 25px/38px Poppins;
-        letter-spacing: 0px;
-        color: #FFFFFF;
-        opacity: 1;
-    }
+    <style>
+        h4 {
+            top: 99px;
+            left: 415px;
+            width: 440px;
+            height: 35px;
+            color: var(--unnamed-color-ffffff);
+            text-align: left;
+            font: normal normal bold 25px/38px Poppins;
+            letter-spacing: 0px;
+            color: #FFFFFF;
+            opacity: 1;
+        }
 
-    h5 {
-        top: 139px;
-        left: 415px;
-        width: 800px;
-        height: 28px;
-        color: var(--unnamed-color-ffffff);
-        text-align: left;
-        font: normal normal normal 20px/30px Poppins;
-        letter-spacing: 0px;
-        color: #FFFFFF;
-        opacity: 1;
-    }
+        h5 {
+            top: 139px;
+            left: 415px;
+            width: 800px;
+            height: 28px;
+            color: var(--unnamed-color-ffffff);
+            text-align: left;
+            font: normal normal normal 20px/30px Poppins;
+            letter-spacing: 0px;
+            color: #FFFFFF;
+            opacity: 1;
+        }
 
-    th {
-        top: 221px;
-        left: 525px;
-        width: 43px;
-        height: 20px;
-        text-align: left;
-        font: normal normal bold 14px/21px Poppins;
-        letter-spacing: 0px;
-        color: #3D3D3D;
-        opacity: 1;
-    }
+        th {
+            top: 221px;
+            left: 525px;
+            width: 43px;
+            height: 20px;
+            text-align: left;
+            font: normal normal bold 14px/21px Poppins;
+            letter-spacing: 0px;
+            color: #3D3D3D;
+            opacity: 1;
+        }
 
-    tr {
-        top: 251px;
-        left: 440px;
-        width: 771px;
-        height: 121px;
-        background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
-        background: #FFFFFF 0% 0% no-repeat padding-box;
-        box-shadow: 0px 3px 6px #00000029;
-        opacity: 1;
-    }
-</style>
+        tr {
+            top: 251px;
+            left: 440px;
+            width: 771px;
+            height: 121px;
+            background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            box-shadow: 0px 3px 6px #00000029;
+            opacity: 1;
+        }
+    </style>
 
 <div class="col-md-12">
     <div class="table-data__tool">
@@ -162,10 +162,10 @@
                 <br />
                 <h6>@Html.DisplayNameFor(model => model.Description)</h6>
                 <br />
-                <div class="card">
+                <div class="card" style="background-color:#E4E4E4">
                     <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                         <br />
-                        <h6 class="desc" style="text-align:center;font-size:larger">
+                        <h6 class="desc" style="text-align:center;font-size:larger; font: normal normal normal 14px/21px Poppins;">
                             Endereço da consulta
                         </h6>
                         <br />
@@ -174,7 +174,8 @@
                         </h6>
                         <br />
                         <h6 class="desc" style="text-align:center">
-                            <button type="button" class="btn btn-outline-secondary" style="align-content:center">Copiar</button>
+                            <i class="fas fa-files-o fa-2x" style="color:#1CA5B8; border: none"></i> <span style="font: normal normal normal 14px/21px Poppins;">Copiar</span>
+                            @*<button type="button" class="btn btn-outline-secondary" style="align-content:center;  background-color:#1CA5B8">Copiar</button>*@
                         </h6>
                         <br />
                     </form>
@@ -183,10 +184,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="row row-cols-3">
-                            <div class="col" style="color:#F46A79">Anotações do médico</div>
-                            <div class="col">Receitas Online</div>
-                            <div class="col">Guia do exame</div>
-                            <div class="col">Atestado</div>
+                            <div class="col" style="color:black;font: normal normal bold 16px/25px Poppins;">Anotações do médico</div>
+                            <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Receitas Online</div>
+                            <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Guia do exame</div>
+                            <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Atestado</div>
                         </div>
                     </div>
                     <div class="card">
@@ -202,63 +203,3 @@
         </div>
     </div>
 </div>
-
-
-@*<div>
-        <h4>ConfirmSolicitationModel</h4>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.DateStart)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.DateStart)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PatientName)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PatientName)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Specialty)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Specialty)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Title)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.DayOfWeek)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.DayOfWeek)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.TypeSolicitation)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.TypeSolicitation)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Id)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Id)
-            </dd>
-        </dl>
-    </div>
-    <div>
-        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-        <a asp-action="Index">Back to List</a>
-    </div>*@

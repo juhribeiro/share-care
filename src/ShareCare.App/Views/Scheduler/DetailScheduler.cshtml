@@ -5,59 +5,160 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>ConfirmScheduler</h1>
 
-<div>
-    <h4>ConfirmSchedulerModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateStart)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateStart)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DoctorName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DoctorName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Specialty)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Specialty)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DayOfWeek)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DayOfWeek)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MeetAddressLink)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MeetAddressLink)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-    </dl>
+<style>
+    h4 {
+        top: 99px;
+        left: 415px;
+        width: 440px;
+        height: 35px;
+        color: var(--unnamed-color-ffffff);
+        text-align: left;
+        font: normal normal bold 25px/38px Poppins;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    h5 {
+        top: 139px;
+        left: 415px;
+        width: 800px;
+        height: 28px;
+        color: var(--unnamed-color-ffffff);
+        text-align: left;
+        font: normal normal normal 20px/30px Poppins;
+        letter-spacing: 0px;
+        color: #FFFFFF;
+        opacity: 1;
+    }
+
+    th {
+        top: 221px;
+        left: 525px;
+        width: 43px;
+        height: 20px;
+        text-align: left;
+        font: normal normal bold 14px/21px Poppins;
+        letter-spacing: 0px;
+        color: #3D3D3D;
+        opacity: 1;
+    }
+
+    tr {
+        top: 251px;
+        left: 440px;
+        width: 771px;
+        height: 121px;
+        background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        opacity: 1;
+    }
+</style>
+
+<div class="col-md-12">
+    <div class="table-data__tool">
+        <div class="table-data__tool-right">
+            <h4 style="color: white; top: 99px;">Meu calendário de atendimentos:</h4>
+            <h5 style="color:white; top:139px;">Aqui você controla toda a sua rotina de cuidados com seus pacientes</h5>
+        </div>
+    </div>
+    <div class="col">
+        <div class="au-card">
+            <div class="row row-cols-1">
+                <div class="col-1" style="align-content:center">
+                    <button type="button" class="btn btn-outline-secondary"><</button>
+                    <button type="button" class="btn btn-outline-secondary">></button>
+                </div>
+                <div class="col-1" style="align-content:center">
+                    <button type="button" class="btn btn-outline-secondary">Hoje</button>
+                </div>
+                <div class="col-7" style="text-align: center;">
+                    <p style="color:black; text-align: center; font-size:larger">Sábado - 5 de Setembro, 2020</p>
+                </div>
+                <div class="col-3" style="align-content:center">
+                    <button type="button" class="btn btn-outline-secondary" style="color:#F46A79">Mês</button>
+                    <button type="button" class="btn btn-outline-secondary" style="color:#F46A79">Semana</button>
+                    <button type="button" class="btn btn-outline-secondary">Dia</button>
+                </div>
+            </div>
+            <br />
+            <h5 style="color:black;">Consulta de rotina</h5>
+            <br />
+            <div class="au-card">
+                <div class="card">
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <table class="table table-data2">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="image img-40">
+                                            <img src="~/img/icon/Gabriela.jpg" />
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span style="font: normal normal bold 18px/27px Poppins;letter-spacing: 0px;color: #002D42;opacity: 1;">@Html.DisplayFor(model => model.DoctorName)</span>
+                                         <br />@Html.DisplayFor(model => model.Specialty)
+                                    </td>
+                                    <td class="desc">
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+                <br />
+                <h6>@Html.DisplayNameFor(model => model.Description)</h6>
+                <br />
+                <div class="card"  style="background-color:#E4E4E4">
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <br />
+                        <h6 class="desc" style="text-align:center;font-size:larger; font: normal normal normal 14px/21px Poppins;">
+                            Endereço da consulta:
+                        </h6>
+                        <br />
+                        <h6 class="desc" style="text-align:center; color:#F46A79;font-size:larger">
+                            @Html.DisplayFor(model => model.MeetAddressLink)
+                        </h6>
+                        <br />
+                        <h6 class="desc" style="text-align:center">
+                            <i class="fas fa-files-o fa-2x" style="color:#1CA5B8; border: none"></i> <span style="font: normal normal normal 14px/21px Poppins;">Copiar</span>
+                            @*<button type="button" class="btn btn-outline-secondary" style="align-content:center; background-color:#1CA5B8">Copiar</button>*@
+                        </h6>
+                        <br />
+                    </form>
+                </div>
+            </div>
+            <br />
+            <div class="card">
+                <div class="card-header">
+                    <div class="row row-cols-3">
+                        <div class="col" style="color:black;font: normal normal bold 16px/25px Poppins;">Anotações do médico</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Receitas</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Exames</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Atestados</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Sintomas</div>
+                        <div class="col" style="font: normal normal bold 16px/25px Poppins;color: #B7B7B7;">Analytics</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <br />
+                        <div class="row form-group">
+                            <div class="col-12 col-md-12">
+                                @Html.DisplayFor(model => model.Description)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

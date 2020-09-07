@@ -45,14 +45,14 @@
     <link href="~/css/theme.css" rel="stylesheet" media="all">
 </head>
 <body class="animsition">
-    <div class="page-wrapper"  style="@backGround">
+    <div class="page-wrapper" style="@backGround">
         <!-- HEADER MOBILE-->
         <header class="header-mobile d-block d-lg-none">
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.html">
-                            <img src="~/img/icon/logo.png" alt="CoolAdmin"  width="50%" height="50%"/>
+                            <img src="~/img/icon/logo.png" alt="CoolAdmin" width="50%" height="50%" />
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -66,14 +66,14 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         @*<li>
-                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                              @welcome
-                            </a>
-                        </li>*@
+                                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                                    @welcome
+                                </a>
+                            </li>*@
 
                         <li>
                             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                                <i class="fas fa-calendar-alt"></i>Agenda
+                                <i class="fas fa-calendar-alt"></i>Calendário
                             </a>
                         </li>
 
@@ -81,7 +81,7 @@
                         {
                             <li>
                                 <a class="navbar-brand" asp-area="" asp-controller="PatientGuide" asp-action="Index">
-                                    <i class="fas fa-chart-bar"></i>Guia de Pacientes
+                                    <i class="fas fa-book"></i>Guia de Pacientes
                                 </a>
                             </li>
                         }
@@ -89,7 +89,7 @@
                         {
                             <li>
                                 <a class="navbar-brand" asp-area="" asp-controller="MedicalGuide" asp-action="Index">
-                                    <i class="fas fa-chart-bar"></i>Guia médico
+                                    <i class="fas fa-book"></i>Guia médico
                                 </a>
                             </li>
                             <li>
@@ -97,7 +97,18 @@
                                     <i class="fas fa-table"></i>Histórico
                                 </a>
                             </li>
+                            <li>
+                                <a class="navbar-brand" asp-area="" asp-controller="PatientGuide" asp-action="Details">
+                                    <i class="fas fa-bar-chart-o"></i>Análise de saúde
+                                </a>
+                            </li>
                         }
+
+                        <li>
+                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                                <i class="fas fa-calendar-alt"></i>Configurações
+                            </a>
+                        </li>
 
                     </ul>
                 </div>
@@ -115,10 +126,10 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         @*<li>
-                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                                @welcome
-                            </a>
-                        </li>*@
+                                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                                    @welcome
+                                </a>
+                            </li>*@
                         <li>
                             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                                 <i class="fas fa-calendar-alt"></i>Agenda
@@ -129,7 +140,7 @@
                         {
                             <li>
                                 <a class="navbar-brand" asp-area="" asp-controller="PatientGuide" asp-action="Index">
-                                    <i class="fas fa-chart-bar"></i>Guia de Pacientes
+                                    <i class="fas fa-book"></i>Guia de Pacientes
                                 </a>
                             </li>
                         }
@@ -137,15 +148,27 @@
                         {
                             <li>
                                 <a class="navbar-brand" asp-area="" asp-controller="MedicalGuide" asp-action="Index">
-                                    <i class="fas fa-chart-bar"></i>Guia médico
+                                    <i class="fas fa-book"></i>Guia médico
                                 </a>
                             </li>
-                            <li>
+                                                        <li>
                                 <a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="Index">
                                     <i class="fas fa-table"></i>Histórico
                                 </a>
                             </li>
+                            <li>
+                                <a class="navbar-brand" asp-area="" asp-controller="PatientGuide" asp-action="Details" data-id="a87a5ece-3a8d-474b-891b-072161dd1a8f">
+                                    <i class="fas fa-bar-chart-o"></i>Análise de saúde
+                                </a>
+                            </li>
+
                         }
+
+                        <li>
+                            <a class="navbar-brand">
+                                <i class="fas fa-wrench"></i>Configurações
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
