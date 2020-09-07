@@ -53,6 +53,13 @@ namespace ShareCare.Model.Mapper
             CreateMap<DoctorPatientModel, DoctorPatient>()
                .ReverseMap();
 
+            CreateMap<Scheduler, EnchiridionDoctorModel>()
+                  .ForMember(x => x.Name, o => o.MapFrom(x => x.DoctorPatient.Doctor.Name))
+                  .ForMember(x => x.CRM, o => o.MapFrom(x => x.DoctorPatient.Doctor.CRM))
+                  .ForMember(x => x.DataStart, o => o.MapFrom(x => x.DateStart))
+                  .ForMember(x => x.Specialty, o => o.MapFrom(x => x.Specialty))
+                  .ForMember(x => x.Enchiridion, o => o.MapFrom(x => x.Enchiridions));
+
             CreateMap<SchedulerModel, Scheduler>()
                 .ForPath(x => x.DoctorPatient.DoctorId, o => o.MapFrom(x => x.DoctorPatient.DoctorId))
                 .ForPath(x => x.DoctorPatient.PatientId, o => o.MapFrom(x => x.DoctorPatient.PatientId))

@@ -6,6 +6,8 @@
     var doctor = PersonType.Doctor.ToString();
     bool isDoctor = Context.GetRole().Equals(doctor);
     var welcome = isDoctor ? $"Olá Dra {name},\n Como estão seus pacientes?" : $"Olá {name},\n Como se sente hoje?";
+    var backGround = isDoctor ? $"background-color:#F36B79;" : $"background-color:#1DA6B8;";
+
 }
 
 <!DOCTYPE html>
@@ -43,14 +45,14 @@
     <link href="~/css/theme.css" rel="stylesheet" media="all">
 </head>
 <body class="animsition">
-    <div class="page-wrapper">
+    <div class="page-wrapper"  style="@backGround">
         <!-- HEADER MOBILE-->
         <header class="header-mobile d-block d-lg-none">
             <div class="header-mobile__bar">
                 <div class="container-fluid">
                     <div class="header-mobile-inner">
                         <a class="logo" href="index.html">
-                            <img src="~/img/icon/logo.png" alt="CoolAdmin" />
+                            <img src="~/img/icon/logo.png" alt="CoolAdmin"  width="50%" height="50%"/>
                         </a>
                         <button class="hamburger hamburger--slider" type="button">
                             <span class="hamburger-box">
@@ -91,7 +93,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">
+                                <a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="Index">
                                     <i class="fas fa-table"></i>Histórico
                                 </a>
                             </li>
@@ -139,7 +141,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="History">
+                                <a class="navbar-brand" asp-area="" asp-controller="MedicalHistory" asp-action="Index">
                                     <i class="fas fa-table"></i>Histórico
                                 </a>
                             </li>
@@ -150,8 +152,8 @@
         </aside>
         <!-- END MENU SIDEBAR-->
         <!-- PAGE CONTAINER-->
-        <div class="page-wrapper">
-            <div class="page-container">
+        <div class="page-wrapper" style="@backGround">
+            <div class="page-container" style="@backGround">
                 <!-- HEADER DESKTOP-->
                 <header class="header-desktop">
                     <div class="section__content section__content--p30">

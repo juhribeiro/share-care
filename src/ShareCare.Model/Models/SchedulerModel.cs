@@ -31,7 +31,7 @@ namespace ShareCare.Model.Models
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var results = new List<ValidationResult>();
-            if (DateStart > DateTime.Now)
+            if (DateStart < DateTime.Now)
             {
                 var members = new string[] { nameof(DateStart) }.ToList();
                 var valid = new ValidationResult("A data de inicio precisa ser maior que a data atual", members);
