@@ -1,7 +1,6 @@
 # Share&Care
 A Share&Care trouxe soluções que facilitará cada vez mais a
 comunicação online entre médicos e pacientes, deficientes ou não.
-
 <img src='/src/ShareCare.App/wwwroot/img/icon/logo.png'>
 
 # Descrição
@@ -63,6 +62,11 @@ dotnet restore
 dotnet run
 
 ```
+# Links do projeto
+
+- Site:  https://sharecare.azurewebsites.net/
+- Video de utilização:  https://www.youtube.com/watch?v=iHWhwvjLwXI
+- Pitch: https://www.youtube.com/watch?v=R9gEBnuRM9s&rel=0
 
 # Meta
 
